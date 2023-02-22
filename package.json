@@ -1,6 +1,6 @@
 {
-  "name": "grommet",
-  "version": "3.0.0",
+  "name": "grommet-exp",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "sideEffects": [
@@ -26,8 +26,8 @@
     "build": "rm -rf ./dist && rollup -c ./rollup.config.mjs"
   },
   "peerDependencies": {
-    "react": "^16.6.1 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.6.1 || ^17.0.0 || ^18.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "dependencies": {
     "grommet-exp-theme": "file:.yalc/grommet-exp-theme"
