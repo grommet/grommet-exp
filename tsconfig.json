@@ -15,7 +15,8 @@
     "noEmitHelpers": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
-    "baseUrl": "src/"
+    "baseUrl": "src/",
+    "resolveJsonModule": true,
   },
   "exclude": [
     "node_modules",

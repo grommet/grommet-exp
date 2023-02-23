@@ -9,7 +9,7 @@
   "description": "focus on the essential experience",
   "authors": [
     "Eric Soderberg",
-    "Taylor Seamus"
+    "Taylor Seamans"
   ],
   "bugs": "https://github.com/grommet/grommet/issues",
   "license": "Apache-2.0",
@@ -30,7 +30,8 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "grommet-exp-theme": "file:.yalc/grommet-exp-theme"
+    "grommet-exp-theme": "file:.yalc/grommet-exp-theme",
+    "grommet-exp-tokens": "file:.yalc/grommet-exp-tokens"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

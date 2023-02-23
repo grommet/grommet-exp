@@ -2262,6 +2262,13 @@ grapheme-splitter@^1.0.4:
   dependencies:
     "@vanilla-extract/css" "^1.9.5"
     "@vanilla-extract/recipes" "^0.3.0"
+    grommet-exp-tokens "file:../../Library/Caches/Yarn/v6/npm-grommet-exp-theme-1.0.0-f88e28e4-3e29-4077-bc48-b5b12cb75a56-1677190904464/node_modules/grommet-exp-theme/.yalc/grommet-exp-tokens"
+
+"grommet-exp-tokens@file:.yalc/grommet-exp-theme/.yalc/grommet-exp-tokens":
+  version "0.1.0"
+
+"grommet-exp-tokens@file:.yalc/grommet-exp-tokens":
+  version "0.1.0"
 
 has-flag@^3.0.0:
   version "3.0.0"
