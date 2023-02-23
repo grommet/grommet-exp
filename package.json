@@ -48,6 +48,7 @@
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "@vanilla-extract/css": "^1.9.5",
+    "@vanilla-extract/recipes": "^0.3.0",
     "core-js": "^3.27.2",
     "es-module-shims": "^1.6.3",
     "eslint": "^8.34.0",
