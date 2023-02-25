@@ -1,8 +1,9 @@
 {
   "name": "grommet-exp",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": ["dist", ".yalc"],
   "sideEffects": [
     "*.css"
   ],
@@ -30,8 +31,7 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "grommet-exp-theme": "file:.yalc/grommet-exp-theme",
-    "grommet-exp-tokens": "file:.yalc/grommet-exp-tokens"
+    "grommet-exp-theme": "file:.yalc/grommet-exp-theme"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

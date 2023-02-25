@@ -4,6 +4,5 @@ node_modules/
 .npm
 .eslintcache
 .yalc
-yalc.lock
 dist
 .DS_Store
