@@ -1,19 +1,15 @@
 import { forwardRef, ReactNode } from "react";
-import { lightThemeClass } from "grommet-exp-theme";
+import { grommet } from "grommet-exp-theme";
 
 type GrommetProps = {
   children?: ReactNode | ReactNode[];
-  themeMode?: string;
+  // themeMode?: string;
 };
 
 const Grommet = forwardRef<HTMLDivElement, GrommetProps>(
-  ({ children, themeMode = "light", ...rest }: GrommetProps, ref) => {
+  ({ children, ...rest }: GrommetProps, ref) => {
     return (
-      <div
-        className={themeMode === "light" ? lightThemeClass : ""}
-        ref={ref}
-        {...rest}
-      >
+      <div className={grommet} ref={ref} {...rest}>
         {children}
       </div>
     );
