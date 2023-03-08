@@ -7,7 +7,7 @@ type HeadingProps = {
 }
 
 const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ( { children, level, ...rest } : HeadingProps, ref) => {
+  ( { children, level, ...rest } : HeadingProps, ref): JSX.Element => {
     const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>
       createElement(`h${level}`, { ...props, ref }, children)
     return (

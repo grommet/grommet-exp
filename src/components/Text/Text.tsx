@@ -3,14 +3,15 @@ import { text } from 'grommet-exp-theme';
 
 type TextProps = {
   children?: React.ReactNode;
-  size?: 'small' | 'medium' | 'large';
+  color?: "normal" | "strong" | "weak";
+  size?: "small" | "medium" | "large";
 }
 
 const Text = forwardRef<HTMLSpanElement, TextProps>(
-  ( { size, ...rest } : TextProps, ref) => {
+  ( { color, size, ...rest } : TextProps, ref): JSX.Element => {
     return (
       <span
-        className={text({ size })}
+        className={text({ color, size })}
         ref={ref}
         {...rest}
       />

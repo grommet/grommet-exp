@@ -3,14 +3,15 @@ import { text } from 'grommet-exp-theme';
 
 type ParagraphProps = {
   children?: React.ReactNode;
-  size?: 'small' | 'medium' | 'large';
+  color?: "normal" | "strong" | "weak";
+  size?: "small" | "medium" | "large";
 }
 
 const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ( { size, ...rest } : ParagraphProps, ref) => {
+  ( { color, size, ...rest } : ParagraphProps, ref): JSX.Element => {
     return (
       <p
-        className={text({ size })}
+        className={text({ color, size })}
         ref={ref}
         {...rest}
       />

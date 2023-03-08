@@ -7,7 +7,7 @@ type GrommetProps = {
 };
 
 const Grommet = forwardRef<HTMLDivElement, GrommetProps>(
-  ({ children, ...rest }: GrommetProps, ref) => {
+  ({ children, ...rest }: GrommetProps, ref): JSX.Element => {
     return (
       <div className={grommet} ref={ref} {...rest}>
         {children}

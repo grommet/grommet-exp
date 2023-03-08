@@ -5,12 +5,22 @@ type SizeType = "small" | "medium" | "large";
 type AlignType = "start" | "center" | "stretch" | "end";
 type JustifyType = "start" | "center" | "between" | "end";
 
-type SpacingType = SizeType;
-// type SpacingType = SizeType | { horizontal?: SizeType, vertical?: SizeType }
+type SpacingType = SizeType | "none";
+type EdgesSpacingType =
+  | SizeType
+  | {
+      horizontal?: SizeType;
+      vertical?: SizeType;
+      top?: SizeType;
+      bottom?: SizeType;
+      start?: SizeType;
+      end?: SizeType;
+    };
 
 type BoxProps = {
   align?: AlignType;
-  background?: "base" | "back" | "front" | "contrast";
+  as?: React.ElementType;
+  background?: "normal" | "back" | "front" | "contrast";
   border?: boolean;
   children?: React.ReactNode;
   direction?: "row" | "column";
@@ -19,17 +29,68 @@ type BoxProps = {
   gap?: SpacingType;
   height?: SizeType;
   justify?: JustifyType;
-  margin?: SpacingType;
-  pad?: SpacingType;
-  round?: SpacingType;
+  margin?: EdgesSpacingType;
+  pad?: EdgesSpacingType;
+  round?: SizeType;
   width?: SizeType;
   wrap?: boolean;
 };
+
+type PadStyleType = {
+  pad?: SizeType;
+  padHorizontal?: SizeType;
+  padVertical?: SizeType;
+  padTop?: SizeType;
+  padBottom?: SizeType;
+  padStart?: SizeType;
+  padEnd?: SizeType;
+};
+
+const translatePad = (pad? : EdgesSpacingType) : PadStyleType => {
+  const result : PadStyleType = {};
+  if (!pad) return result;
+  if (typeof pad === 'string') result.pad = pad;
+  if (typeof pad === 'object') {
+    if (pad.horizontal) result.padHorizontal = pad.horizontal;
+    if (pad.vertical) result.padVertical = pad.vertical;
+    if (pad.top) result.padTop = pad.top;
+    if (pad.bottom) result.padBottom = pad.bottom;
+    if (pad.start) result.padStart = pad.start;
+    if (pad.end) result.padEnd = pad.end;
+  }
+  return result;
+}
+
+type MarginStyleType = {
+  margin?: SizeType;
+  marginHorizontal?: SizeType;
+  marginVertical?: SizeType;
+  marginTop?: SizeType;
+  marginBottom?: SizeType;
+  marginStart?: SizeType;
+  marginEnd?: SizeType;
+};
+
+const translateMargin = (margin? : EdgesSpacingType) : MarginStyleType => {
+  const result : MarginStyleType = {};
+  if (!margin) return result;
+  if (typeof margin === 'string') result.margin = margin;
+  if (typeof margin === 'object') {
+    if (margin.horizontal) result.marginHorizontal = margin.horizontal;
+    if (margin.vertical) result.marginVertical = margin.vertical;
+    if (margin.top) result.marginTop = margin.top;
+    if (margin.bottom) result.marginBottom = margin.bottom;
+    if (margin.start) result.marginStart = margin.start;
+    if (margin.end) result.marginEnd = margin.end;
+  }
+  return result;
+}
 
 const Box = forwardRef<HTMLDivElement, BoxProps>(
   (
     {
       align,
+      as,
       background,
       border,
       direction = "column",
@@ -46,9 +107,10 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
       ...rest
     }: BoxProps,
     ref
-  ) => {
+  ): JSX.Element => {
+    const Element = as || 'div';
     return (
-      <div
+      <Element
         className={box({
           align,
           background,
@@ -59,8 +121,8 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
           gap,
           height,
           justify,
-          margin,
-          pad,
+          ...translateMargin(margin),
+          ...translatePad(pad),
           round,
           width,
           wrap,
@@ -74,4 +136,4 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
 
 Box.displayName = "Box";
 
-export { Box };
+export { Box, BoxProps };

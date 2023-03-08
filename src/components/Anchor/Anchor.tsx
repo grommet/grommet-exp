@@ -8,7 +8,7 @@ type AnchorProps = {
 }
 
 const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-  ( { disabled, href, ...rest } : AnchorProps, ref) => {
+  ( { disabled, href, ...rest } : AnchorProps, ref): JSX.Element => {
     return (
       <a
         className={anchor}
