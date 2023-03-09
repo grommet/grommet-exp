@@ -21,8 +21,8 @@ type BoxProps = {
   align?: AlignType;
   as?: React.ElementType;
   background?: "normal" | "back" | "front" | "contrast";
-  border?: boolean;
-  children?: React.ReactNode;
+  border?: boolean | "top" | "bottom";
+  children?: React.ReactNode | React.ReactNode[];
   direction?: "row" | "column";
   elevation?: SizeType;
   flex?: boolean | "grow" | "shrink";

@@ -5,6 +5,8 @@ export * from "./Footer";
 export * from "./Grommet";
 export * from "./Header";
 export * from "./Heading";
+export * from "./Icon";
+export * from "./Nav";
 export * from "./Page";
 export * from "./PageContent";
 export * from "./PageHeader";
