@@ -22,7 +22,7 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
       >
         {parent}
         <Heading level={1}>{title}</Heading>
-        {subtitle && <Paragraph>{subtitle}</Paragraph>}
+        {subtitle && <Paragraph level={1}>{subtitle}</Paragraph>}
       </Header>
     );
   }
