@@ -5,7 +5,7 @@ import { Box } from "../Box";
 type ButtonProps = {
   icon?: JSX.Element;
   label?: string;
-  size?: "small" | "medium" | "large";
+  size?: "xsmall" | "small" | "medium" | "large";
   kind?: "default" | "secondary" | "primary";
 };
 
