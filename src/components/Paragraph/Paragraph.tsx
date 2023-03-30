@@ -1,24 +1,23 @@
-import { forwardRef } from 'react';
-import { text } from 'grommet-exp-theme';
+import { forwardRef } from "react";
+import { text } from "grommet-exp-theme";
 
 type ParagraphProps = {
   children?: React.ReactNode;
   color?: "normal" | "strong" | "weak";
   size?: "small" | "medium" | "large";
-}
+  level?: 1 | 2 | 3;
+};
 
 const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
-  ( { color, size, ...rest } : ParagraphProps, ref): JSX.Element => {
-    return (
-      <p
-        className={text({ color, size })}
-        ref={ref}
-        {...rest}
-      />
-    )
-  },
-)
+  (
+    { color, level: levelProp, size, ...rest }: ParagraphProps,
+    ref
+  ): JSX.Element => {
+    const level = !size ? levelProp : undefined;
+    return <p className={text({ color, level, size })} ref={ref} {...rest} />;
+  }
+);
 
-Paragraph.displayName = 'Paragraph';
+Paragraph.displayName = "Paragraph";
 
 export { Paragraph };

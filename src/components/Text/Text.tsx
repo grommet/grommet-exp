@@ -1,24 +1,22 @@
-import { forwardRef } from 'react';
-import { text } from 'grommet-exp-theme';
+import { forwardRef } from "react";
+import { text } from "grommet-exp-theme";
 
 type TextProps = {
   children?: React.ReactNode;
   color?: "normal" | "strong" | "weak";
   size?: "small" | "medium" | "large";
-}
+  level?: 1 | 2;
+};
 
 const Text = forwardRef<HTMLSpanElement, TextProps>(
-  ( { color, size, ...rest } : TextProps, ref): JSX.Element => {
+  ({ color, level: levelProp, size, ...rest }: TextProps, ref): JSX.Element => {
+    const level = !size ? levelProp : undefined;
     return (
-      <span
-        className={text({ color, size })}
-        ref={ref}
-        {...rest}
-      />
-    )
-  },
-)
+      <span className={text({ color, level, size })} ref={ref} {...rest} />
+    );
+  }
+);
 
-Text.displayName = 'Text';
+Text.displayName = "Text";
 
 export { Text };
