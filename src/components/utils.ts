@@ -1,17 +1,6 @@
-// UNUSED
-import { SizeType, SpacingType2 } from "./types";
+import { MarginStyleType, PadStyleType, SpacingType } from "./types";
 
-type PadStyleType = {
-  pad?: SizeType;
-  padHorizontal?: SizeType;
-  padVertical?: SizeType;
-  padTop?: SizeType;
-  padBottom?: SizeType;
-  padStart?: SizeType;
-  padEnd?: SizeType;
-};
-
-const translatePad = (pad? : SpacingType2) : PadStyleType => {
+export const translatePad = (pad? : SpacingType) : PadStyleType => {
   const result : PadStyleType = {};
   if (!pad) return result;
   if (typeof pad === 'string') result.pad = pad;
@@ -22,6 +11,21 @@ const translatePad = (pad? : SpacingType2) : PadStyleType => {
     if (pad.bottom) result.padBottom = pad.bottom;
     if (pad.start) result.padStart = pad.start;
     if (pad.end) result.padEnd = pad.end;
+  }
+  return result;
+}
+
+export const translateMargin = (margin? : SpacingType) : MarginStyleType => {
+  const result : MarginStyleType = {};
+  if (!margin) return result;
+  if (typeof margin === 'string') result.margin = margin;
+  if (typeof margin === 'object') {
+    if (margin.horizontal) result.marginHorizontal = margin.horizontal;
+    if (margin.vertical) result.marginVertical = margin.vertical;
+    if (margin.top) result.marginTop = margin.top;
+    if (margin.bottom) result.marginBottom = margin.bottom;
+    if (margin.start) result.marginStart = margin.start;
+    if (margin.end) result.marginEnd = margin.end;
   }
   return result;
 }

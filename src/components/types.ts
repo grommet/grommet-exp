@@ -1,10 +1,6 @@
-// UNUSED
-export type SizeType = "small" | "medium" | "large";
-export type AlignType = "start" | "center" | "stretch" | "end";
-export type JustifyType = "start" | "center" | "between" | "end";
+export type SizeType = "small" | "medium" | "large" | "none";
 
-export type SpacingType = SizeType;
-export type SpacingType2 =
+export type SpacingType =
   | SizeType
   | {
       horizontal?: SizeType;
@@ -14,3 +10,23 @@ export type SpacingType2 =
       start?: SizeType;
       end?: SizeType;
     };
+
+export type PadStyleType = {
+  pad?: SizeType;
+  padHorizontal?: SizeType;
+  padVertical?: SizeType;
+  padTop?: SizeType;
+  padBottom?: SizeType;
+  padStart?: SizeType;
+  padEnd?: SizeType;
+};
+
+export type MarginStyleType = {
+  margin?: SizeType;
+  marginHorizontal?: SizeType;
+  marginVertical?: SizeType;
+  marginTop?: SizeType;
+  marginBottom?: SizeType;
+  marginStart?: SizeType;
+  marginEnd?: SizeType;
+};
