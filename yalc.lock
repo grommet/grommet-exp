@@ -2,7 +2,11 @@
   "version": "v1",
   "packages": {
     "grommet-exp-theme": {
-      "signature": "059b767b9f77fbd342265687dd6cc79a",
+      "signature": "39d39a1e43d81a6338e49bbb66177e97",
+      "file": true
+    },
+    "hpe-design-tokens": {
+      "signature": "4ca9ec048ee7acb8ddd4666dccc7c51b",
       "file": true
     }
   }
