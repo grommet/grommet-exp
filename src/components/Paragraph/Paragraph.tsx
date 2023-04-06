@@ -14,7 +14,13 @@ const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(
     ref
   ): JSX.Element => {
     const level = !size ? levelProp : undefined;
-    return <p className={text({ color, level, size })} ref={ref} {...rest} />;
+    return (
+      <p
+        className={text({ color, level, size })}
+        ref={ref}
+        {...rest}
+      />
+    );
   }
 );
 

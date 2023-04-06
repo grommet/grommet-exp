@@ -5,14 +5,18 @@ type TextProps = {
   children?: React.ReactNode;
   color?: "normal" | "strong" | "weak";
   size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
-  level?: 1 | 2;
+  level?: 1 | 2 | 3;
 };
 
 const Text = forwardRef<HTMLSpanElement, TextProps>(
   ({ color, level: levelProp, size, ...rest }: TextProps, ref): JSX.Element => {
     const level = !size ? levelProp : undefined;
     return (
-      <span className={text({ color, level, size })} ref={ref} {...rest} />
+      <span
+        className={text({ color, level, size })}
+        ref={ref}
+        {...rest}
+      />
     );
   }
 );
