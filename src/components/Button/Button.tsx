@@ -3,15 +3,27 @@ import { button } from "grommet-exp-theme";
 import { Box } from "../Box";
 
 type ButtonProps = {
+  active?: boolean;
   icon?: JSX.Element;
-  label?: string;
-  size?: "xsmall" | "small" | "medium" | "large";
   kind?: "default" | "secondary" | "primary";
+  label?: string;
+  reverse?: boolean;
+  size?: "xsmall" | "small" | "medium" | "large";
+  type?: "button" | "reset" | "submit";
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { icon: iconProp, kind = "default", label, size, ...rest }: ButtonProps,
+    {
+      active,
+      icon: iconProp,
+      kind = "default",
+      label,
+      reverse,
+      size,
+      type = "button",
+      ...rest
+    }: ButtonProps,
     ref
   ): JSX.Element => {
     const icon =
@@ -23,18 +35,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     let content;
     if (icon && label) {
       content = (
-        <Box direction="row" gap="small">
-          {icon}
-          {label}
+        <Box direction="row" gap="small" align="center">
+          {reverse ? label + icon : icon + label}
         </Box>
       );
     } else content = icon || label;
 
     return (
       <button
-        className={button({ iconOnly, kind, size })}
-        type="button"
         ref={ref}
+        className={button({ active, iconOnly, kind, size })}
+        type={type}
         {...rest}
       >
         {content}
