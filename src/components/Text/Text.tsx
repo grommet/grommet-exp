@@ -3,7 +3,7 @@ import { text } from "grommet-exp-theme";
 
 type TextProps = {
   children?: React.ReactNode;
-  color?: "normal" | "strong" | "weak";
+  color?: "strong" | "weak" | "xweak";
   size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
   level?: 1 | 2 | 3;
 };

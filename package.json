@@ -34,7 +34,8 @@
     "react-dom": "^18.0.0"
   },
   "dependencies": {
-    "grommet-exp-theme": "file:.yalc/grommet-exp-theme"
+    "grommet-exp-theme": "file:.yalc/grommet-exp-theme",
+    "hpe-design-tokens": "file:.yalc/hpe-design-tokens"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

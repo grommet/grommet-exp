@@ -9,7 +9,7 @@ type JustifyType = "start" | "center" | "between" | "end";
 type BoxProps = {
   align?: AlignType;
   as?: React.ElementType;
-  background?: "normal" | "back" | "front" | "contrast";
+  background?: "default" | "back" | "front" | "contrast";
   border?: boolean | "top" | "bottom";
   children?: React.ReactNode | React.ReactNode[];
   direction?: "row" | "column";

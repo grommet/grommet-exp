@@ -3,7 +3,7 @@ import { pageContent } from "grommet-exp-theme";
 import { PageContext, PageContextType } from "../Page/PageContext";
 
 type PageContentProps = {
-  background?: "normal" | "back" | "front" | "contrast";
+  background?: "default" | "back" | "front" | "contrast";
   children?: React.ReactNode;
   fill?: boolean;
 };
