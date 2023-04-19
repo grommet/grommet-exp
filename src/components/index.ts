@@ -16,3 +16,4 @@ export * from "./PageContent";
 export * from "./PageHeader";
 export * from "./Paragraph";
 export * from "./Text";
+export * from "./TextInput";
