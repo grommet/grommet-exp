@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { box } from "grommet-exp-theme";
-import { SizeType, SpacingType } from "../types";
+import { SizeType, SpacingSizeType, SpacingType } from "../types";
 import { translateMargin, translatePad } from "../utils";
 
 type AlignType = "start" | "center" | "stretch" | "end";
@@ -15,12 +15,12 @@ type BoxProps = {
   direction?: "row" | "column";
   elevation?: SizeType;
   flex?: boolean | "grow" | "shrink";
-  gap?: SizeType | "xsmall";
+  gap?: SpacingSizeType;
   height?: SizeType | "xsmall";
   justify?: JustifyType;
   margin?: SpacingType;
   pad?: SpacingType;
-  round?: SizeType | "xsmall";
+  round?: SpacingSizeType;
   width?: SizeType | "xsmall";
   wrap?: boolean;
 };

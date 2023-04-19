@@ -1,15 +1,15 @@
 import { forwardRef } from "react";
 import { grid } from "grommet-exp-theme";
-import { SizeType, SpacingType } from "../types";
+import { SizeType, SpacingSizeType, SpacingType } from "../types";
 import { translateMargin, translatePad } from "../utils";
 
 type GridProps = {
   as?: React.ElementType;
   children?: React.ReactNode | React.ReactNode[];
   columns?: SizeType;
-  gap?: SizeType;
-  margin?: SpacingType;
-  pad?: SpacingType;
+  gap?: SpacingSizeType;
+  margin?: SpacingSizeType;
+  pad?: SpacingSizeType;
 };
 
 const Grid = forwardRef<HTMLDivElement, GridProps>(
