@@ -15,13 +15,13 @@ type BoxProps = {
   direction?: "row" | "column";
   elevation?: SizeType;
   flex?: boolean | "grow" | "shrink";
-  gap?: SizeType;
-  height?: SizeType;
+  gap?: SizeType | "xsmall";
+  height?: SizeType | "xsmall";
   justify?: JustifyType;
   margin?: SpacingType;
   pad?: SpacingType;
-  round?: SizeType;
-  width?: SizeType;
+  round?: SizeType | "xsmall";
+  width?: SizeType | "xsmall";
   wrap?: boolean;
 };
 
