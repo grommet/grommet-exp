@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { Box } from "../Box";
 import { Text } from "../Text";
+import { text } from "grommet-exp-theme";
 
 type FormFieldProps = {
   children?: JSX.Element | JSX.Element[];
@@ -30,11 +31,18 @@ const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
   ): JSX.Element => {
     return (
       <Box {...rest}>
-        {label && <label htmlFor={htmlFor}>{label}</label>}
-        {help && <Text>{help}</Text>}
+        {label && (
+          <label
+            className={text({ size: "xsmall", weight: "medium" })}
+            htmlFor={htmlFor}
+          >
+            {label}
+          </label>
+        )}
+        {help && <Text size="xsmall">{help}</Text>}
         {children}
-        {help && <Text>{help}</Text>}
-        {error && <Text>{error}</Text>}
+        {help && <Text size="xsmall">{help}</Text>}
+        {error && <Text size="xsmall">{error}</Text>}
       </Box>
     );
   }
