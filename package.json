@@ -28,7 +28,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "rm -rf ./dist && rollup -c ./rollup.config.mjs",
-    "release-stable": "babel-node ./tools/release-stable.js"
+    "release-stable": "babel-node ./tools/release-stable.mjs"
   },
   "peerDependencies": {
     "react": "^18.0.0",
