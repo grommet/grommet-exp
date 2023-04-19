@@ -1,6 +1,10 @@
 import { forwardRef } from "react";
 
-const Form = forwardRef<HTMLFormElement>((props, ref): JSX.Element => {
+type FormProps = {
+  children?: JSX.Element | JSX.Element[];
+};
+
+const Form = forwardRef<HTMLFormElement, FormProps>((props, ref): JSX.Element => {
   return <form ref={ref} {...props} />;
 });
 
