@@ -1,6 +1,7 @@
 export * from "./Anchor";
 export * from "./Box";
 export * from "./Button";
+export * from "./Card";
 export * from "./Footer";
 export * from "./Grid";
 export * from "./Grommet";
