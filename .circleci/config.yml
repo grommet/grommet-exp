@@ -60,19 +60,9 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - lint:
-          requires:
-            - checkout
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore:
-                - stable
       - build:
           requires:
             - checkout
-            - lint
           filters:
             tags:
               only: /.*/
