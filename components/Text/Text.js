@@ -4,9 +4,10 @@ import { forwardRef } from 'react';
 import { text } from 'grommet-exp-theme';
 
 var Text = forwardRef(function (_a, ref) {
-    var color = _a.color, levelProp = _a.level, size = _a.size, weight = _a.weight, rest = __rest(_a, ["color", "level", "size", "weight"]);
+    var as = _a.as, color = _a.color, levelProp = _a.level, size = _a.size, textAlign = _a.textAlign, weight = _a.weight, rest = __rest(_a, ["as", "color", "level", "size", "textAlign", "weight"]);
+    var Element = as || "span";
     var level = !size ? levelProp : undefined;
-    return (jsx("span", __assign({ className: text({ color: color, level: level, size: size, weight: weight }), ref: ref }, rest)));
+    return (jsx(Element, __assign({ className: text({ color: color, level: level, size: size, textAlign: textAlign, weight: weight }), ref: ref }, rest)));
 });
 Text.displayName = "Text";
 

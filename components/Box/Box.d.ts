@@ -1,7 +1,7 @@
 /// <reference types="react" />
-import { SizeType, SpacingSizeType, SpacingType } from "../types";
-type AlignType = "start" | "center" | "stretch" | "end";
-type JustifyType = "start" | "center" | "between" | "end";
+import { ContentSizeType, SpacingSizeType, SpacingType } from "../types";
+export type AlignType = "start" | "center" | "stretch" | "end";
+export type JustifyType = "start" | "center" | "between" | "end";
 type BoxProps = {
     align?: AlignType;
     as?: React.ElementType;
@@ -9,15 +9,15 @@ type BoxProps = {
     border?: boolean | "top" | "bottom";
     children?: React.ReactNode | React.ReactNode[];
     direction?: "row" | "column";
-    elevation?: SizeType;
+    elevation?: "small" | "medium" | "large";
     flex?: boolean | "grow" | "shrink";
     gap?: SpacingSizeType;
-    height?: SizeType | "xsmall";
+    height?: ContentSizeType;
     justify?: JustifyType;
     margin?: SpacingType;
     pad?: SpacingType;
-    round?: SpacingSizeType;
-    width?: SizeType | "xsmall";
+    round?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "full";
+    width?: ContentSizeType;
     wrap?: boolean;
 };
 declare const Box: import("react").ForwardRefExoticComponent<BoxProps & import("react").RefAttributes<HTMLDivElement>>;

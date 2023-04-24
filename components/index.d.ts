@@ -10,6 +10,8 @@ export * from "./Grommet";
 export * from "./Header";
 export * from "./Heading";
 export * from "./Icon";
+export * from "./NameValueList";
+export * from "./NameValuePair";
 export * from "./Nav";
 export * from "./Page";
 export * from "./PageContent";
