@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 import { ContentSizeType, SpacingSizeType, SpacingType } from "../types";
 export type AlignType = "start" | "center" | "stretch" | "end";
 export type JustifyType = "start" | "center" | "between" | "end";

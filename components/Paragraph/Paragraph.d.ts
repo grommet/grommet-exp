@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 type ParagraphProps = {
     children?: React.ReactNode;
     color?: "strong" | "weak";

@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 import { GridProps } from "../Grid";
 import { TextAlignType } from "../Text";
 import { SpacingSizeType } from "../types";

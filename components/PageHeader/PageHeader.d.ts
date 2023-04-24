@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 type PageHeaderProps = {
     parent?: JSX.Element;
     subtitle?: string;

@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 type ButtonProps = {
     active?: boolean;
     icon?: JSX.Element;

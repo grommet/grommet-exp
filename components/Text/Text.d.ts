@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 import { SpacingType } from "../types";
 export type TextAlignType = "start" | "center" | "end" | undefined;
 type TextProps = {

@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="react" />
 import { ContentSizeType, SpacingSizeType } from "../types";
 export type GridColumnsType = ContentSizeType | "small-small" | "small-flex" | "flex-small" | "small-flex-small" | "small-medium" | "medium-small" | "medium-flex" | "flex-medium" | "medium-medium";
 type GapType = SpacingSizeType | {
