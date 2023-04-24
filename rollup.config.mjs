@@ -1,6 +1,7 @@
 import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import copy from "rollup-plugin-copy";
 import external from "rollup-plugin-peer-deps-external";
 import typescript from "@rollup/plugin-typescript";
 
@@ -12,7 +13,7 @@ export default {
     format: "esm",
     sourcemap: true,
     preserveModules: true,
-    preserveModulesRoot: 'src',
+    preserveModulesRoot: "src",
   },
   plugins: [
     external(),
@@ -21,9 +22,17 @@ export default {
     typescript({
       tsconfig: "./tsconfig.json",
       declaration: true,
-      declarationDir: 'dist',
+      declarationDir: "dist",
+    }),
+    copy({
+      targets: [
+        {
+          src: ["package.json", "LICENSE"],
+          dest: "dist",
+        },
+      ],
     }),
     postcss(),
   ],
-  external: ['react', 'react-dom', 'grommet-exp-theme', 'tslib'],
+  external: ["react", "react-dom", "grommet-exp-theme", "tslib"],
 };
