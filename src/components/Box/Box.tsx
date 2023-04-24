@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import { box } from "grommet-exp-theme";
-import { SizeType, SpacingSizeType, SpacingType } from "../types";
+import { ContentSizeType, SpacingSizeType, SpacingType } from "../types";
 import { translateMargin, translatePad } from "../utils";
 
-type AlignType = "start" | "center" | "stretch" | "end";
-type JustifyType = "start" | "center" | "between" | "end";
+export type AlignType = "start" | "center" | "stretch" | "end";
+export type JustifyType = "start" | "center" | "between" | "end";
 
 type BoxProps = {
   align?: AlignType;
@@ -13,15 +13,15 @@ type BoxProps = {
   border?: boolean | "top" | "bottom";
   children?: React.ReactNode | React.ReactNode[];
   direction?: "row" | "column";
-  elevation?: SizeType;
+  elevation?: "small" | "medium" | "large";
   flex?: boolean | "grow" | "shrink";
   gap?: SpacingSizeType;
-  height?: SizeType | "xsmall";
+  height?: ContentSizeType;
   justify?: JustifyType;
   margin?: SpacingType;
   pad?: SpacingType;
-  round?: SpacingSizeType;
-  width?: SizeType | "xsmall";
+  round?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "full";
+  width?: ContentSizeType;
   wrap?: boolean;
 };
 

@@ -1,15 +1,50 @@
 import { forwardRef } from "react";
 import { grid } from "grommet-exp-theme";
-import { SizeType, SpacingSizeType, SpacingType } from "../types";
+import { ContentSizeType, SpacingSizeType, SpacingType } from "../types";
 import { translateMargin, translatePad } from "../utils";
+
+export type GridColumnsType =
+  | ContentSizeType
+  | "small-small"
+  | "small-flex"
+  | "flex-small"
+  | "small-flex-small"
+  | "small-medium"
+  | "medium-small"
+  | "medium-flex"
+  | "flex-medium"
+  | "medium-medium";
+
+type GapType =
+  | SpacingSizeType
+  | { column: SpacingSizeType; row: SpacingSizeType };
+
+type GapStyleType = {
+  gap?: SpacingSizeType;
+  gapColumn?: SpacingSizeType;
+  gapRow?: SpacingSizeType;
+};
 
 type GridProps = {
   as?: React.ElementType;
   children?: React.ReactNode | React.ReactNode[];
-  columns?: SizeType;
-  gap?: SpacingSizeType;
+  columns?: GridColumnsType;
+  gap?: GapType;
+  height?: ContentSizeType;
   margin?: SpacingSizeType;
   pad?: SpacingSizeType;
+  width?: ContentSizeType;
+};
+
+const translateGap = (gap?: GapType): GapStyleType => {
+  const result: GapStyleType = {};
+  if (!gap) return result;
+  if (typeof gap === "string") result.gap = gap;
+  if (typeof gap === "object") {
+    if (gap.column) result.gapColumn = gap.column;
+    if (gap.row) result.gapRow = gap.row;
+  }
+  return result;
 };
 
 const Grid = forwardRef<HTMLDivElement, GridProps>(
@@ -18,20 +53,24 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(
       as,
       columns,
       gap,
+      height,
       margin = "none",
       pad = "none",
+      width,
       ...rest
     }: GridProps,
     ref
   ): JSX.Element => {
-    const Element = as || 'div';
+    const Element = as || "div";
     return (
       <Element
         className={grid({
           columns,
-          gap,
+          ...translateGap(gap),
+          height,
           ...translateMargin(margin),
           ...translatePad(pad),
+          width,
         })}
         ref={ref}
         {...rest}

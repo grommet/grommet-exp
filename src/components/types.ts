@@ -1,5 +1,20 @@
-export type SizeType = "small" | "medium" | "large" | "none";
-export type SpacingSizeType = "xsmall" | "small" | "medium" | "large" | "none";
+export type ContentSizeType =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "none";
+
+export type SpacingSizeType =
+  | "xxsmall"
+  | "xsmall"
+  | "small"
+  | "medium"
+  | "large"
+  | "xlarge"
+  | "none";
 
 export type SpacingType =
   | SpacingSizeType
@@ -10,7 +25,8 @@ export type SpacingType =
       bottom?: SpacingSizeType;
       start?: SpacingSizeType;
       end?: SpacingSizeType;
-    };
+    }
+  | undefined;
 
 export type PadStyleType = {
   pad?: SpacingSizeType;
