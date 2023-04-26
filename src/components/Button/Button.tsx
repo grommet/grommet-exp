@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconProp && !iconProp.props.size
         ? cloneElement(iconProp, { size })
         : iconProp;
-    const iconOnly = (icon && !label) || undefined;
+    const iconOnly : (boolean | undefined) = (icon && !label) || undefined;
 
     let content;
     if (icon && label) {

@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "ESNext",
     "jsx": "react-jsx",
     "sourceMap": true,
     "outDir": "dist",
     "lib": [ "es6" ],
-    "rootDir": "src",
     "declaration": true,
     "declarationDir": "./dist",
     "strict": true,
@@ -17,9 +16,5 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "moduleResolution": "node"
-  },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
+  }
 }

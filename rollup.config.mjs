@@ -2,7 +2,7 @@ import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import copy from "rollup-plugin-copy";
 
 export default {
@@ -10,12 +10,9 @@ export default {
   treeshake: false,
   output: [
     {
-      file: './dist/index.js',
-      format: 'cjs',
-    },
-    {
-      file: './dist/index.mjs',
+      dir: './dist',
       format: 'es',
+      preserveModules: true,
     },
   ],
   plugins: [
