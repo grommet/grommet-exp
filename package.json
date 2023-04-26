@@ -1,12 +1,8 @@
 {
   "name": "grommet-exp",
   "version": "0.1.0",
-  "main": "index.js",
-  "module": "index.js",
-  "files": [
-    "dist",
-    ".yalc"
-  ],
+  "exports": "./index.js",
+  "types": "index.d.ts",
   "sideEffects": [
     "*.css"
   ],
@@ -48,6 +44,7 @@
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.1.0",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
@@ -72,8 +69,8 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.34.1",
     "simple-git": "^3.17.0",
+    "tslib": "^2.5.0",
     "typescript": "^4.9.4"
   },
   "browserslist": [
