@@ -10,7 +10,7 @@ type BoxProps = {
   align?: AlignType;
   as?: React.ElementType;
   background?: "default" | "back" | "front" | "contrast";
-  border?: boolean | "top" | "bottom";
+  border?: boolean | "top" | "bottom" | "left" | "right";
   children?: React.ReactNode | React.ReactNode[];
   direction?: "row" | "column";
   elevation?: "small" | "medium" | "large";
@@ -47,7 +47,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
     }: BoxProps,
     ref
   ): JSX.Element => {
-    const Element = as || 'div';
+    const Element = as || "div";
     return (
       <Element
         className={box({
