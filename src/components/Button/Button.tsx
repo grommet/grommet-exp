@@ -1,11 +1,12 @@
-import { cloneElement, forwardRef } from "react";
+import { cloneElement, forwardRef, useContext } from "react";
 import { button } from "grommet-exp-theme";
 import { Box } from "../Box";
+import { ButtonContext, ButtonKindType } from "./ButtonContext";
 
 type ButtonProps = {
   active?: boolean;
   icon?: JSX.Element;
-  kind?: "default" | "secondary" | "primary";
+  kind?: ButtonKindType;
   label?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
   reverse?: boolean;
@@ -18,7 +19,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       active,
       icon: iconProp,
-      kind = "default",
+      kind: kindProp = "default",
       label,
       onClick,
       reverse,
@@ -28,6 +29,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }: ButtonProps,
     ref
   ): JSX.Element => {
+    const { kind: contextKind } = useContext(ButtonContext);
     const icon =
       iconProp && !iconProp.props.size
         ? cloneElement(iconProp, { size })
@@ -46,7 +48,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={button({ active, iconOnly, kind, size })}
+        className={button({
+          active,
+          iconOnly,
+          kind: contextKind ?? kindProp,
+          size,
+        })}
         type={type}
         onClick={onClick}
         {...rest}
