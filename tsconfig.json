@@ -5,7 +5,7 @@
     "jsx": "react-jsx",
     "sourceMap": true,
     "outDir": "dist",
-    "lib": [ "es6" ],
+    "lib": [ "es6", "dom" ],
     "declaration": true,
     "declarationDir": "./dist",
     "strict": true,

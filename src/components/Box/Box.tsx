@@ -11,7 +11,8 @@ type BoxProps = {
   as?: React.ElementType;
   background?: "default" | "back" | "front" | "contrast";
   border?: boolean | "top" | "bottom";
-  children?: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode;
+  className?: string;
   direction?: "row" | "column";
   elevation?: "small" | "medium" | "large";
   flex?: boolean | "grow" | "shrink";
@@ -19,7 +20,9 @@ type BoxProps = {
   height?: ContentSizeType;
   justify?: JustifyType;
   margin?: SpacingType;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => any;
   pad?: SpacingType;
+  position?: "absolute" | "fixed" | "relative";
   round?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "full";
   width?: ContentSizeType;
   wrap?: boolean;
@@ -32,6 +35,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
       as,
       background,
       border,
+      className,
       direction = "column",
       elevation,
       flex,
@@ -40,6 +44,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
       justify,
       margin,
       pad,
+      position,
       round,
       width,
       wrap,
@@ -47,10 +52,10 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
     }: BoxProps,
     ref
   ): JSX.Element => {
-    const Element = as || 'div';
+    const Element = as || "div";
     return (
       <Element
-        className={box({
+        className={`${box({
           align,
           background,
           border,
@@ -62,10 +67,11 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
           justify,
           ...translateMargin(margin),
           ...translatePad(pad),
+          position,
           round,
           width,
           wrap,
-        })}
+        })} ${className}`}
         ref={ref}
         {...rest}
       />

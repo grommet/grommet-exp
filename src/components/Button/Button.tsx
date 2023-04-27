@@ -7,6 +7,7 @@ type ButtonProps = {
   icon?: JSX.Element;
   kind?: "default" | "secondary" | "primary";
   label?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
   reverse?: boolean;
   size?: "xsmall" | "small" | "medium" | "large";
   type?: "button" | "reset" | "submit";
@@ -19,6 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon: iconProp,
       kind = "default",
       label,
+      onClick,
       reverse,
       size,
       type = "button",
@@ -46,6 +48,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={button({ active, iconOnly, kind, size })}
         type={type}
+        onClick={onClick}
         {...rest}
       >
         {content}
