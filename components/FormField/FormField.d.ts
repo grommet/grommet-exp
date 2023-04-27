@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type FormFieldProps = {
     children?: JSX.Element | JSX.Element[];
     error?: string;

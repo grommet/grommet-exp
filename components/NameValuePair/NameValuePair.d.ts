@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type NameValuePairProps = {
     children?: string | number | JSX.Element;
     name?: string | JSX.Element;

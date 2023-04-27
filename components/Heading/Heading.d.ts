@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type HeadingProps = {
     children?: React.ReactNode;
     level?: 1 | 2 | 3;

@@ -1,10 +1,10 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type ButtonProps = {
     active?: boolean;
     icon?: JSX.Element;
     kind?: "default" | "secondary" | "primary";
     label?: string;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
     reverse?: boolean;
     size?: "xsmall" | "small" | "medium" | "large";
     type?: "button" | "reset" | "submit";

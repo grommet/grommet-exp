@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type PageContentProps = {
     background?: "default" | "back" | "front" | "contrast";
     children?: React.ReactNode;

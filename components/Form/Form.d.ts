@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 import { BoxProps } from "../Box";
 type FormProps = {
     children?: JSX.Element | JSX.Element[];

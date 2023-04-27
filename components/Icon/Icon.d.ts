@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type IconProps = {
     height?: "small" | "medium" | "large";
     size?: "small" | "medium" | "large" | "xlarge";

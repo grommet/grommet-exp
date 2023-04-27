@@ -1,5 +1,4 @@
 /// <reference types="react" />
-/// <reference types="react" />
 type PageProps = {
     children?: React.ReactNode;
     kind?: "wide" | "narrow" | "full";

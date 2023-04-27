@@ -5,9 +5,9 @@ import { box } from 'grommet-exp-theme';
 import { translateMargin, translatePad } from '../utils.js';
 
 const Box = forwardRef((_a, ref) => {
-    var { align, as, background, border, direction = "column", elevation, flex, gap, height, justify, margin, pad, round, width, wrap } = _a, rest = __rest(_a, ["align", "as", "background", "border", "direction", "elevation", "flex", "gap", "height", "justify", "margin", "pad", "round", "width", "wrap"]);
-    const Element = as || 'div';
-    return (jsx(Element, Object.assign({ className: box(Object.assign(Object.assign(Object.assign({ align,
+    var { align, as, background, border, className, direction = "column", elevation, flex, gap, height, justify, margin, pad, position, round, width, wrap } = _a, rest = __rest(_a, ["align", "as", "background", "border", "className", "direction", "elevation", "flex", "gap", "height", "justify", "margin", "pad", "position", "round", "width", "wrap"]);
+    const Element = as || "div";
+    return (jsx(Element, Object.assign({ className: `${box(Object.assign(Object.assign(Object.assign({ align,
             background,
             border,
             direction,
@@ -15,9 +15,10 @@ const Box = forwardRef((_a, ref) => {
             flex,
             gap,
             height,
-            justify }, translateMargin(margin)), translatePad(pad)), { round,
+            justify }, translateMargin(margin)), translatePad(pad)), { position,
+            round,
             width,
-            wrap })), ref: ref }, rest)));
+            wrap }))} ${className}`, ref: ref }, rest)));
 });
 Box.displayName = "Box";
 

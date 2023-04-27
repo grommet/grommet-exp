@@ -6,7 +6,7 @@ import '../Box/index.js';
 import { Box } from '../Box/Box.js';
 
 const Button = forwardRef((_a, ref) => {
-    var { active, icon: iconProp, kind = "default", label, reverse, size, type = "button" } = _a, rest = __rest(_a, ["active", "icon", "kind", "label", "reverse", "size", "type"]);
+    var { active, icon: iconProp, kind = "default", label, onClick, reverse, size, type = "button" } = _a, rest = __rest(_a, ["active", "icon", "kind", "label", "onClick", "reverse", "size", "type"]);
     const icon = iconProp && !iconProp.props.size
         ? cloneElement(iconProp, { size })
         : iconProp;
@@ -17,7 +17,7 @@ const Button = forwardRef((_a, ref) => {
     }
     else
         content = icon || label;
-    return (jsx("button", Object.assign({ ref: ref, className: button({ active, iconOnly, kind, size }), type: type }, rest, { children: content })));
+    return (jsx("button", Object.assign({ ref: ref, className: button({ active, iconOnly, kind, size }), type: type, onClick: onClick }, rest, { children: content })));
 });
 Button.displayName = "Button";
 
