@@ -13,7 +13,7 @@ const Button = forwardRef((_a, ref) => {
     const iconOnly = (icon && !label) || undefined;
     let content;
     if (icon && label) {
-        content = (jsx(Box, Object.assign({ direction: "row", gap: "small", align: "center" }, { children: reverse ? label + icon : icon + label })));
+        content = (jsx(Box, Object.assign({ direction: "row", gap: "small", align: "center" }, { children: reverse ? [label, icon] : [icon, label] })));
     }
     else
         content = icon || label;
