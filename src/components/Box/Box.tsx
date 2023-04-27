@@ -10,7 +10,7 @@ type BoxProps = {
   align?: AlignType;
   as?: React.ElementType;
   background?: "default" | "back" | "front" | "contrast";
-  border?: boolean | "top" | "bottom";
+  border?: boolean | "top" | "bottom" | "left" | "right";
   children?: React.ReactNode;
   className?: string;
   direction?: "row" | "column";
