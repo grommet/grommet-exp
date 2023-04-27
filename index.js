@@ -2,6 +2,7 @@ import './components/index.js';
 export { Anchor } from './components/Anchor/Anchor.js';
 export { Box } from './components/Box/Box.js';
 export { Button } from './components/Button/Button.js';
+export { ButtonContext } from './components/Button/ButtonContext.js';
 export { Card } from './components/Card/Card.js';
 export { Drop } from './components/Drop/Drop.js';
 export { Footer } from './components/Footer/Footer.js';

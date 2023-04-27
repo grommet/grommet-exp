@@ -24,6 +24,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "build": "rollup -c ./rollup.config.mjs",
+    "push": "cd dist && yalc push",
     "release-stable": "babel-node ./tools/release-stable.mjs"
   },
   "peerDependencies": {

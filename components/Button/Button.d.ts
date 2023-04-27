@@ -1,8 +1,9 @@
 /// <reference types="react" />
+import { ButtonKindType } from "./ButtonContext";
 type ButtonProps = {
     active?: boolean;
     icon?: JSX.Element;
-    kind?: "default" | "secondary" | "primary";
+    kind?: ButtonKindType;
     label?: string;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
     reverse?: boolean;
