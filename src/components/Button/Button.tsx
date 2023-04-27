@@ -32,13 +32,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconProp && !iconProp.props.size
         ? cloneElement(iconProp, { size })
         : iconProp;
-    const iconOnly : (boolean | undefined) = (icon && !label) || undefined;
+    const iconOnly: boolean | undefined = (icon && !label) || undefined;
 
     let content;
     if (icon && label) {
       content = (
         <Box direction="row" gap="small" align="center">
-          {reverse ? label + icon : icon + label}
+          {reverse ? [label, icon] : [icon, label]}
         </Box>
       );
     } else content = icon || label;
