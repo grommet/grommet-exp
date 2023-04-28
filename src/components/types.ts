@@ -5,6 +5,7 @@ export type ContentSizeType =
   | "medium"
   | "large"
   | "xlarge"
+  | "full"
   | "none";
 
 export type SpacingSizeType =

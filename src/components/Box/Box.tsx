@@ -9,7 +9,13 @@ export type JustifyType = "start" | "center" | "between" | "end";
 type BoxProps = {
   align?: AlignType;
   as?: React.ElementType;
-  background?: "default" | "back" | "front" | "contrast";
+  background?:
+    | "default"
+    | "back"
+    | "front"
+    | "contrast"
+    | "active"
+    | "selected";
   border?: boolean | "top" | "bottom" | "left" | "right";
   children?: React.ReactNode;
   className?: string;
