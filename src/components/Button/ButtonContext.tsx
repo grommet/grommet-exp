@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 export type ButtonKindType =
+  | undefined
   | "default"
   | "nav"
   | "secondary"
@@ -12,5 +13,5 @@ export interface ButtonContextType {
 }
 
 export const ButtonContext = createContext<ButtonContextType>({
-  kind: "default",
+  kind: undefined,
 });

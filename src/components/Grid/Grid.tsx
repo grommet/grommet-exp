@@ -27,6 +27,7 @@ type GapStyleType = {
 
 type GridProps = {
   as?: React.ElementType;
+  align?: "start" | "center" | "stretch" | "end";
   children?: React.ReactNode | React.ReactNode[];
   columns?: GridColumnsType;
   gap?: GapType;
@@ -51,6 +52,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(
   (
     {
       as,
+      align,
       columns,
       gap,
       height,
@@ -65,6 +67,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(
     return (
       <Element
         className={grid({
+          align,
           columns,
           ...translateGap(gap),
           height,
