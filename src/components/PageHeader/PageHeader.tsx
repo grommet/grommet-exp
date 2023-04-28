@@ -3,14 +3,8 @@ import { Header } from "../Header";
 import { Heading } from "../Heading";
 import { Paragraph } from "../Paragraph";
 import { Box } from "../Box";
-import {
-  pageHeader,
-  pageHeaderContainerStyle,
-  pageHeaderParent,
-  pageHeaderTitle,
-  pageHeaderSubtitle,
-  pageHeaderActions,
-} from "grommet-exp-theme";
+import { Container } from "../Container";
+import { pageHeader, pageHeaderContainerStyle } from "grommet-exp-theme";
 
 type PageHeaderProps = {
   actions?: JSX.Element;
@@ -34,15 +28,15 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
           pad={{ top: "large", bottom: "medium" }}
           {...rest}
         >
-          <Box className={pageHeaderParent}>{parent}</Box>
-          <Box className={pageHeaderTitle}>
+          <Container gridArea="parent">{parent}</Container>
+          <Container gridArea="title">
             <Heading level={1}>{title}</Heading>
-          </Box>
-          <Box className={pageHeaderActions}>{actions}</Box>
+          </Container>
+          <Container gridArea="actions">{actions}</Container>
           {subtitle && (
-            <Box className={pageHeaderSubtitle}>
+            <Container gridArea="subtitle">
               <Paragraph level={1}>{subtitle}</Paragraph>
-            </Box>
+            </Container>
           )}
         </Header>
       </Box>

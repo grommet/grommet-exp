@@ -19,10 +19,11 @@ type BoxProps = {
   border?: boolean | "top" | "bottom" | "left" | "right";
   children?: React.ReactNode;
   className?: string;
-  direction?: "row" | "column";
+  direction?: "row" | "column" | "row-responsive";
   elevation?: "small" | "medium" | "large";
   flex?: boolean | "grow" | "shrink";
   gap?: SpacingSizeType;
+  gridArea?: string;
   height?: ContentSizeType;
   justify?: JustifyType;
   margin?: SpacingType;
@@ -46,6 +47,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
       elevation,
       flex,
       gap,
+      gridArea,
       height,
       justify,
       margin,
@@ -78,6 +80,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
           width,
           wrap,
         })} ${className}`}
+        style={{ gridArea }}
         ref={ref}
         {...rest}
       />
