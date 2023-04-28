@@ -20,5 +20,7 @@ export * from "./PageContent";
 export * from "./PageHeader";
 export * from "./Paragraph";
 export * from "./Select";
+export * from "./Tab";
+export * from "./Tabs";
 export * from "./Text";
 export * from "./TextInput";
