@@ -1,10 +1,10 @@
 /// <reference types="react" />
 type TabProps = {
-    children?: React.ReactNode;
+    children: JSX.Element;
     label?: string;
 };
 declare const Tab: {
-    ({ children, label }: TabProps): import("react").ReactNode;
+    ({ children, label }: TabProps): JSX.Element | null;
     displayName: string;
 };
 export { Tab };
