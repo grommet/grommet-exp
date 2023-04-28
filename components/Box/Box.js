@@ -5,7 +5,7 @@ import { box } from 'grommet-exp-theme';
 import { translateMargin, translatePad } from '../utils.js';
 
 const Box = forwardRef((_a, ref) => {
-    var { align, as, background, border, className, direction = "column", elevation, flex, gap, height, justify, margin, pad, position, round, width, wrap } = _a, rest = __rest(_a, ["align", "as", "background", "border", "className", "direction", "elevation", "flex", "gap", "height", "justify", "margin", "pad", "position", "round", "width", "wrap"]);
+    var { align, as, background, border, className, direction = "column", elevation, flex, gap, gridArea, height, justify, margin, pad, position, round, width, wrap } = _a, rest = __rest(_a, ["align", "as", "background", "border", "className", "direction", "elevation", "flex", "gap", "gridArea", "height", "justify", "margin", "pad", "position", "round", "width", "wrap"]);
     const Element = as || "div";
     return (jsx(Element, Object.assign({ className: `${box(Object.assign(Object.assign(Object.assign({ align,
             background,
@@ -18,7 +18,7 @@ const Box = forwardRef((_a, ref) => {
             justify }, translateMargin(margin)), translatePad(pad)), { position,
             round,
             width,
-            wrap }))} ${className}`, ref: ref }, rest)));
+            wrap }))} ${className}`, style: { gridArea }, ref: ref }, rest)));
 });
 Box.displayName = "Box";
 
