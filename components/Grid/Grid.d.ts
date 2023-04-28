@@ -7,6 +7,7 @@ type GapType = SpacingSizeType | {
 };
 type GridProps = {
     as?: React.ElementType;
+    align?: "start" | "center" | "stretch" | "end";
     children?: React.ReactNode | React.ReactNode[];
     columns?: GridColumnsType;
     gap?: GapType;

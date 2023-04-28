@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 const ButtonContext = createContext({
-    kind: "default",
+    kind: undefined,
 });
 
 export { ButtonContext };
