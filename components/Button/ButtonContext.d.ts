@@ -1,5 +1,5 @@
 /// <reference types="react" />
-export type ButtonKindType = "default" | "nav" | "secondary" | "primary";
+export type ButtonKindType = "default" | "nav" | "secondary" | "primary" | "plain";
 export interface ButtonContextType {
     kind: ButtonKindType;
 }

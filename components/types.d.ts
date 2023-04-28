@@ -1,4 +1,4 @@
-export type ContentSizeType = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "none";
+export type ContentSizeType = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "full" | "none";
 export type SpacingSizeType = "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "none";
 export type SpacingType = SpacingSizeType | {
     horizontal?: SpacingSizeType;
