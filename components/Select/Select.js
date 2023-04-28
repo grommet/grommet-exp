@@ -31,7 +31,7 @@ const Select = forwardRef((_a, ref) => {
         event.stopPropagation();
         setOpen((prev) => !prev);
     }, []);
-    return (jsxs(Box, { children: [jsxs(Box, Object.assign({ className: input, direction: "row", justify: "between", onClick: onClick }, { children: [jsx(Box, Object.assign({ as: "span", flex: true }, { children: value })), jsx(FormDown, {})] })), jsx("select", Object.assign({ ref: ref, className: select }, rest, { value: value }, { children: options.map((option) => {
+    return (jsxs(Box, { children: [jsxs(Box, Object.assign({ className: input, align: "center", direction: "row", justify: "between", onClick: onClick }, { children: [jsx(Box, Object.assign({ as: "span", flex: true }, { children: value })), jsx(FormDown, {})] })), jsx("select", Object.assign({ ref: ref, className: select }, rest, { value: value }, { children: options.map((option) => {
                     const [label, val] = splitOption(option);
                     return (jsx("option", Object.assign({ value: value }, { children: label }), val));
                 }) })), open ? (jsx(Drop, { children: options.map((option) => {

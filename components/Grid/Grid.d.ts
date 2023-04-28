@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { ContentSizeType, SpacingSizeType } from "../types";
-export type GridColumnsType = ContentSizeType | "small-small" | "small-flex" | "flex-small" | "small-flex-small" | "small-medium" | "medium-small" | "medium-flex" | "flex-medium" | "medium-medium";
+export type GridColumnsType = ContentSizeType | "small-small" | "small-flex" | "flex-small" | "small-flex-small" | "small-medium" | "medium-small" | "medium-flex" | "flex-medium" | "medium-medium" | 2;
 type GapType = SpacingSizeType | {
     column: SpacingSizeType;
     row: SpacingSizeType;
