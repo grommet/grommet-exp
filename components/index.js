@@ -20,5 +20,7 @@ import './PageContent/index.js';
 import './PageHeader/index.js';
 import './Paragraph/index.js';
 import './Select/index.js';
+import './Tab/index.js';
+import './Tabs/index.js';
 import './Text/index.js';
 import './TextInput/index.js';

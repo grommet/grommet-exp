@@ -24,5 +24,8 @@ export { PageContent } from './components/PageContent/PageContent.js';
 export { PageHeader } from './components/PageHeader/PageHeader.js';
 export { Paragraph } from './components/Paragraph/Paragraph.js';
 export { Select } from './components/Select/Select.js';
+export { Tab } from './components/Tab/Tab.js';
+export { Tabs } from './components/Tabs/Tabs.js';
+export { TabsContext } from './components/Tabs/TabsContext.js';
 export { Text } from './components/Text/Text.js';
 export { TextInput } from './components/TextInput/TextInput.js';
