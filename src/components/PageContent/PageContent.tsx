@@ -12,13 +12,7 @@ const PageContent = forwardRef<HTMLDivElement, PageContentProps>(
   ({ background, fill, ...rest }: PageContentProps, ref): JSX.Element => {
     const { kind } = useContext(PageContext) as PageContextType;
     return (
-      <PageContext.Provider value={{ kind }}>
-        <div
-          className={pageContent({ background, kind })}
-          ref={ref}
-          {...rest}
-        />
-      </PageContext.Provider>
+      <div className={pageContent({ background, kind })} ref={ref} {...rest} />
     );
   }
 );
