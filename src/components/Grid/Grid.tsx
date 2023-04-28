@@ -34,7 +34,7 @@ type GridProps = {
   gap?: GapType;
   height?: ContentSizeType;
   margin?: SpacingSizeType;
-  pad?: SpacingSizeType;
+  pad?: SpacingType;
   width?: ContentSizeType;
 };
 
