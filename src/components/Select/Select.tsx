@@ -63,6 +63,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       <Box>
         <Box
           className={input}
+          align="center"
           direction="row"
           justify="between"
           onClick={onClick}

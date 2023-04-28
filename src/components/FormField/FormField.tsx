@@ -40,7 +40,7 @@ const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
           </label>
         )}
         {help && <Text size="xsmall">{help}</Text>}
-        {children}
+        <Box margin={{ top: "xsmall" }}>{children}</Box>
         {help && <Text size="xsmall">{help}</Text>}
         {error && <Text size="xsmall">{error}</Text>}
       </Box>

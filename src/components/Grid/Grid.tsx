@@ -13,7 +13,8 @@ export type GridColumnsType =
   | "medium-small"
   | "medium-flex"
   | "flex-medium"
-  | "medium-medium";
+  | "medium-medium"
+  | 2;
 
 type GapType =
   | SpacingSizeType

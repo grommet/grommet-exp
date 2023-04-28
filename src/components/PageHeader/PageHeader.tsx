@@ -3,11 +3,12 @@ import { Header } from "../Header";
 import { Heading } from "../Heading";
 import { Paragraph } from "../Paragraph";
 import { Box } from "../Box";
-import { Container } from "../Container";
 import { pageHeader, pageHeaderContainerStyle } from "grommet-exp-theme";
+import { SpacingType } from "../types";
 
 type PageHeaderProps = {
   actions?: JSX.Element;
+  pad?: SpacingType;
   parent?: JSX.Element;
   subtitle?: string;
   title?: string;
@@ -15,7 +16,7 @@ type PageHeaderProps = {
 
 const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
   (
-    { actions, parent, subtitle, title, ...rest }: PageHeaderProps,
+    { actions, pad, parent, subtitle, title, ...rest }: PageHeaderProps,
     ref
   ): JSX.Element => {
     return (
@@ -25,18 +26,18 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
           className={pageHeader}
           align="start"
           gap="none"
-          pad={{ top: "large", bottom: "medium" }}
+          pad={pad || { top: "large", bottom: "medium" }}
           {...rest}
         >
-          <Container gridArea="parent">{parent}</Container>
-          <Container gridArea="title">
+          <Box gridArea="parent">{parent}</Box>
+          <Box gridArea="title">
             <Heading level={1}>{title}</Heading>
-          </Container>
-          <Container gridArea="actions">{actions}</Container>
+          </Box>
+          <Box gridArea="actions">{actions}</Box>
           {subtitle && (
-            <Container gridArea="subtitle">
+            <Box gridArea="subtitle">
               <Paragraph level={1}>{subtitle}</Paragraph>
-            </Container>
+            </Box>
           )}
         </Header>
       </Box>
