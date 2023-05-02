@@ -15,6 +15,8 @@ export { Grommet } from './components/Grommet/Grommet.js';
 export { Header } from './components/Header/Header.js';
 export { Heading } from './components/Heading/Heading.js';
 export { Icon } from './components/Icon/Icon.js';
+export { Legend } from './components/Legend/Legend.js';
+export { useBounds, useKind, valueColor, valuePattern } from './components/Meter/utils.js';
 export { Meter } from './components/Meter/Meter.js';
 export { NameValueList } from './components/NameValueList/NameValueList.js';
 export { NameValueListContext } from './components/NameValueList/NameValueListContext.js';

@@ -2,7 +2,7 @@ import { __rest } from 'tslib';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { forwardRef, useMemo } from 'react';
 import { structuredTokens } from 'hpe-design-tokens';
-import { valueColor, strokePattern, backgroundColor } from './utils.js';
+import { valueColor, valuePattern, backgroundColor } from './utils.js';
 
 const Bar = forwardRef((_a, ref // doesn't work with <svg />?
 ) => {
@@ -59,7 +59,7 @@ const Bar = forwardRef((_a, ref // doesn't work with <svg />?
             let patternId;
             let pattern;
             if (patternName || patternProp)
-                [patternId, pattern] = strokePattern(id || "meter", patternName || patternProp, stroke);
+                [patternId, pattern] = valuePattern(id || "meter", patternName || patternProp, stroke);
             if (pattern)
                 patterns.push(pattern);
             const result = (jsx("path", Object.assign({ d: d, fill: "none", stroke: patternId ||

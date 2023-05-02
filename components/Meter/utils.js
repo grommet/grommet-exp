@@ -1,6 +1,75 @@
 import { jsxs, jsx } from 'react/jsx-runtime';
+import { useMemo } from 'react';
 import { structuredTokens } from 'hpe-design-tokens';
 
+const useKind = (kind, values) => {
+    return useMemo(() => {
+        if (kind)
+            return kind;
+        if (!values)
+            return "single";
+        const firstValue = values[0];
+        if (firstValue && Array.isArray(firstValue.value))
+            return "sequential";
+        return "qualitative";
+    }, [kind, values]);
+};
+const calculateBounds = (values) => {
+    const result = { pathMax: 0, pathMin: 0, colorMax: 0, colorMin: 0 };
+    if (values && values[0] && Array.isArray(values[0].value)) {
+        values.forEach((value) => {
+            const [pVal] = value.value;
+            if (pVal < 0)
+                result.pathMin += pVal;
+            if (pVal > 0)
+                result.pathMax += pVal;
+        });
+        // color max/min should stay 0-100 to align with color names
+        result.colorMin = -100;
+        result.colorMax = 100;
+    }
+    else if (values && values.length > 1) {
+        values.forEach((value) => {
+            const val = value.value;
+            if (val < 0)
+                result.pathMin += val;
+            if (val > 0)
+                result.pathMax += val;
+        });
+        result.colorMin = result.pathMin;
+        result.colorMax = result.pathMax;
+    }
+    else {
+        result.pathMax = 100;
+        result.colorMax = 100;
+    }
+    return result;
+};
+const useBounds = (kind, max, min, values) => {
+    return useMemo(() => {
+        if (min !== undefined || max !== undefined) {
+            const result = { pathMax: 100, pathMin: 0, colorMax: 100, colorMin: 0 };
+            if (Array.isArray(min)) {
+                result.pathMin = min[0];
+                result.colorMin = min[1];
+            }
+            else if (min !== undefined) {
+                result.pathMin = min;
+                result.colorMin = min;
+            }
+            if (Array.isArray(max)) {
+                result.pathMax = max[0];
+                result.colorMax = max[1];
+            }
+            else if (max !== undefined) {
+                result.pathMax = max;
+                result.colorMax = max;
+            }
+            return result;
+        }
+        return calculateBounds(values);
+    }, [kind, max, min, values]);
+};
 const valueColor = ({ kind, bounds, value, index, }) => {
     const dataviz = structuredTokens.color.dataviz;
     const max = bounds.colorMax;
@@ -78,7 +147,7 @@ to take account the startAngle not being 0. So no matter the
 value it will be % 360 to get the correct angle.
 */
 const translateEndAngle = (startAngle, anglePer, value) => Math.max(0, startAngle + anglePer * value) % 360;
-const strokePattern = (idArg, patternName, stroke) => {
+const valuePattern = (idArg, patternName, stroke) => {
     const id = `${idArg}-${patternName}-${stroke}`;
     let element = null;
     if (patternName === "dots") {
@@ -93,4 +162,4 @@ const strokePattern = (idArg, patternName, stroke) => {
     return [`url(#${id})`, element];
 };
 
-export { arcCommands, backgroundColor, baseUnit, polarToCartesian, strokePattern, translateEndAngle, valueColor };
+export { arcCommands, backgroundColor, baseUnit, polarToCartesian, translateEndAngle, useBounds, useKind, valueColor, valuePattern };

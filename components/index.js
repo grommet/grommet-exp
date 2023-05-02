@@ -13,6 +13,7 @@ import './Grommet/index.js';
 import './Header/index.js';
 import './Heading/index.js';
 import './Icon/index.js';
+import './Legend/index.js';
 import './Meter/index.js';
 import './NameValueList/index.js';
 import './NameValuePair/index.js';

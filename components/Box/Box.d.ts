@@ -16,6 +16,7 @@ type BoxProps = {
     gap?: SpacingSizeType;
     gridArea?: string;
     height?: ContentSizeType;
+    id?: string;
     justify?: JustifyType;
     margin?: SpacingType;
     onClick?: (event: React.MouseEvent<HTMLDivElement>) => any;

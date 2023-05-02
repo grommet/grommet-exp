@@ -10,12 +10,14 @@ export type ValuesType = {
     value: number | [number, number];
 }[];
 export type KindType = "qualitative" | "sequential" | "divergent" | "single";
+export declare const useKind: (kind?: KindType, values?: ValuesType) => KindType;
 export type BoundsType = {
     pathMax: number;
     pathMin: number;
     colorMax: number;
     colorMin: number;
 };
+export declare const useBounds: (kind: KindType, max?: number | [number, number], min?: number | [number, number], values?: ValuesType) => BoundsType;
 export type GraphicProps = {
     background: BackgroundType;
     bounds: BoundsType;
@@ -44,5 +46,5 @@ export declare const polarToCartesian: (centerX: number, centerY: number, radius
 };
 export declare const arcCommands: (centerX: number, centerY: number, radius: number, startAngle: number, endAngle: number) => string;
 export declare const translateEndAngle: (startAngle: number, anglePer: number, value: number) => number;
-export declare const strokePattern: (idArg: string, patternName: PatternType | undefined, stroke: string) => [string, JSX.Element];
+export declare const valuePattern: (idArg: string, patternName: PatternType | undefined, stroke: string) => [string, JSX.Element];
 export {};

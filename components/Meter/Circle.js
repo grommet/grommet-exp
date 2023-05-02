@@ -2,7 +2,7 @@ import { __rest } from 'tslib';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { forwardRef, useMemo } from 'react';
 import { structuredTokens } from 'hpe-design-tokens';
-import { valueColor, translateEndAngle, strokePattern, arcCommands, backgroundColor } from './utils.js';
+import { valueColor, translateEndAngle, valuePattern, arcCommands, backgroundColor } from './utils.js';
 
 const Circle = forwardRef((_a, ref) => {
     var { background, bounds, direction, // ignored
@@ -60,7 +60,7 @@ const Circle = forwardRef((_a, ref) => {
             let patternId;
             let pattern;
             if (patternName || patternProp)
-                [patternId, pattern] = strokePattern(id || "meter", patternName || patternProp, stroke);
+                [patternId, pattern] = valuePattern(id || "meter", patternName || patternProp, stroke);
             if (pattern)
                 patterns.push(pattern);
             if (round) {
