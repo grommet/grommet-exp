@@ -1,3 +1,4 @@
+import { jsxs, jsx } from 'react/jsx-runtime';
 import { structuredTokens } from 'hpe-design-tokens';
 
 const valueColor = ({ kind, bounds, value, index, }) => {
@@ -77,5 +78,19 @@ to take account the startAngle not being 0. So no matter the
 value it will be % 360 to get the correct angle.
 */
 const translateEndAngle = (startAngle, anglePer, value) => Math.max(0, startAngle + anglePer * value) % 360;
+const strokePattern = (idArg, patternName, stroke) => {
+    const id = `${idArg}-${patternName}-${stroke}`;
+    let element = null;
+    if (patternName === "dots") {
+        element = (jsxs("pattern", Object.assign({ id: id, x: 0, y: 0, width: 8, height: 8, patternUnits: "userSpaceOnUse" }, { children: [jsx("rect", { x: 0, y: 0, width: 8, height: 8, fill: stroke, fillOpacity: 0.5 }), jsx("circle", { cx: 4, cy: 4, r: 3, fill: stroke })] }), stroke));
+    }
+    else if (patternName === "diagonals") {
+        element = (jsxs("pattern", Object.assign({ id: id, x: 0, y: 0, width: 12, height: 12, patternUnits: "userSpaceOnUse" }, { children: [jsx("line", { x1: "9", y1: "0", x2: "0", y2: "9", stroke: stroke, strokeWidth: "3", strokeLinecap: "square" }), jsx("line", { x1: "12", y1: "9", x2: "9", y2: "12", stroke: stroke, strokeWidth: "3", strokeLinecap: "square" })] }), stroke));
+    }
+    else {
+        element = (jsx("pattern", Object.assign({ id: id, x: 0, y: 0, width: 8, height: 8, patternUnits: "userSpaceOnUse" }, { children: jsx("rect", { x: 0, y: 0, width: 8, height: 8, fill: stroke }) }), stroke));
+    }
+    return [`url(#${id})`, element];
+};
 
-export { arcCommands, backgroundColor, baseUnit, polarToCartesian, translateEndAngle, valueColor };
+export { arcCommands, backgroundColor, baseUnit, polarToCartesian, strokePattern, translateEndAngle, valueColor };

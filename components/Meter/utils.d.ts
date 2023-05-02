@@ -1,10 +1,12 @@
 /// <reference types="react" />
 import { BackgroundType } from "../Box";
+export type PatternType = "dots" | "diagonals";
 export type ValuesType = {
     highlight?: boolean;
     label?: string;
     onClick?: (event: React.MouseEvent) => void;
     onHover?: (over: boolean) => void;
+    pattern?: PatternType;
     value: number | [number, number];
 }[];
 export type KindType = "qualitative" | "sequential" | "divergent" | "single";
@@ -18,7 +20,9 @@ export type GraphicProps = {
     background: BackgroundType;
     bounds: BoundsType;
     direction?: "horizontal" | "vertical";
+    id?: string;
     kind: KindType;
+    pattern?: "dots" | "diagonals";
     round?: boolean;
     size?: "small" | "medium" | "large" | "full";
     thickness?: "small" | "medium" | "large";
@@ -40,4 +44,5 @@ export declare const polarToCartesian: (centerX: number, centerY: number, radius
 };
 export declare const arcCommands: (centerX: number, centerY: number, radius: number, startAngle: number, endAngle: number) => string;
 export declare const translateEndAngle: (startAngle: number, anglePer: number, value: number) => number;
+export declare const strokePattern: (idArg: string, patternName: PatternType | undefined, stroke: string) => [string, JSX.Element];
 export {};

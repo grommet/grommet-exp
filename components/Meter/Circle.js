@@ -2,11 +2,11 @@ import { __rest } from 'tslib';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { forwardRef, useMemo } from 'react';
 import { structuredTokens } from 'hpe-design-tokens';
-import { valueColor, translateEndAngle, arcCommands, backgroundColor } from './utils.js';
+import { valueColor, translateEndAngle, strokePattern, arcCommands, backgroundColor } from './utils.js';
 
 const Circle = forwardRef((_a, ref) => {
     var { background, bounds, direction, // ignored
-    kind, round, size = "medium", thickness: thicknessProp = "medium", type, values } = _a, rest = __rest(_a, ["background", "bounds", "direction", "kind", "round", "size", "thickness", "type", "values"]);
+    id, kind, pattern: patternProp, round, size = "medium", thickness: thicknessProp = "medium", type, values } = _a, rest = __rest(_a, ["background", "bounds", "direction", "id", "kind", "pattern", "round", "size", "thickness", "type", "values"]);
     const width = useMemo(() => {
         if (size === "full")
             return 288;
@@ -30,11 +30,12 @@ const Circle = forwardRef((_a, ref) => {
     let startAngle = type === "semicircle" ? 270 : 0;
     const paths = [];
     let pathCaps = [];
+    const patterns = [];
     (values || []).forEach((valueArg, index) => {
         const pathValue = typeof valueArg.value === "number" ? valueArg.value : valueArg.value[0];
         const colorValue = typeof valueArg.value === "number" ? valueArg.value : valueArg.value[1];
         if (pathValue > 0) {
-            const { highlight, label, onHover, value } = valueArg, pathRest = __rest(valueArg, ["highlight", "label", "onHover", "value"]);
+            const { highlight, label, onHover, pattern: patternName, value } = valueArg, pathRest = __rest(valueArg, ["highlight", "label", "onHover", "pattern", "value"]);
             const key = `p-${index}`;
             const stroke = valueColor({
                 kind,
@@ -56,14 +57,24 @@ const Circle = forwardRef((_a, ref) => {
                     onMouseLeave: () => onHover(false),
                 };
             }
+            let patternId;
+            let pattern;
+            if (patternName || patternProp)
+                [patternId, pattern] = strokePattern(id || "meter", patternName || patternProp, stroke);
+            if (pattern)
+                patterns.push(pattern);
             if (round) {
                 const d1 = arcCommands(centerX, centerY, radius, startAngle, endAngle);
-                paths.unshift(jsx("path", Object.assign({ d: d1, fill: "none", stroke: someHighlight && !highlight ? background : stroke, strokeWidth: strokeWidth, strokeLinecap: "round" }, hoverProps, pathRest), key));
+                paths.unshift(jsx("path", Object.assign({ d: d1, fill: "none", stroke: patternId ||
+                        (someHighlight && !highlight && background) ||
+                        stroke, strokeWidth: strokeWidth, strokeLinecap: "round" }, hoverProps, pathRest), key));
                 // To handle situations where the last values are small, redraw
                 // a dot at the end. Give just a bit of angle to avoid anti-aliasing
                 // leakage around the edge.
                 const d2 = arcCommands(centerX, centerY, radius, endAngle - 0.5, endAngle);
-                const pathCap = (jsx("path", Object.assign({ d: d2, fill: "none", stroke: someHighlight && !highlight ? background : stroke, strokeWidth: strokeWidth, strokeLinecap: "round" }, hoverProps, pathRest), `${key}-`));
+                const pathCap = (jsx("path", Object.assign({ d: d2, fill: "none", stroke: patternId ||
+                        (someHighlight && !highlight && background) ||
+                        stroke, strokeWidth: strokeWidth, strokeLinecap: "round" }, hoverProps, pathRest), `${key}-`));
                 // If we are on a large enough path to not need re-drawing previous
                 // ones, clear the pathCaps we've collected already.
                 if (endAngle - startAngle > 2 * anglePer) {
@@ -73,7 +84,9 @@ const Circle = forwardRef((_a, ref) => {
             }
             else {
                 const d = arcCommands(centerX, centerY, radius, startAngle, endAngle);
-                paths.push(jsx("path", Object.assign({ d: d, fill: "none", stroke: someHighlight && !highlight ? background : stroke, strokeWidth: strokeWidth, strokeLinecap: "butt" }, hoverProps, pathRest), key));
+                paths.push(jsx("path", Object.assign({ d: d, fill: "none", stroke: patternId ||
+                        (someHighlight && !highlight && background) ||
+                        stroke, strokeWidth: strokeWidth, strokeLinecap: "butt" }, hoverProps, pathRest), key));
             }
             startValue += pathValue;
             startAngle = endAngle;
@@ -88,7 +101,7 @@ const Circle = forwardRef((_a, ref) => {
         track = (jsx("circle", { cx: centerX, cy: centerY, r: radius, stroke: backgroundColor(background), strokeWidth: strokeWidth, strokeLinecap: round ? "round" : "square", fill: "none" }));
     }
     const viewBoxHeight = type === "semicircle" ? width / 2 : width;
-    return (jsxs("svg", Object.assign({ viewBox: `0 0 ${width} ${viewBoxHeight}`, width: size === "full" ? "100%" : width, height: size === "full" ? "100%" : viewBoxHeight }, rest, { children: [track, paths, pathCaps] })));
+    return (jsxs("svg", Object.assign({ viewBox: `0 0 ${width} ${viewBoxHeight}`, width: size === "full" ? "100%" : width, height: size === "full" ? "100%" : viewBoxHeight }, rest, { children: [patterns.length && jsx("defs", { children: patterns }), track, paths, pathCaps] })));
 });
 Circle.displayName = "Circle";
 

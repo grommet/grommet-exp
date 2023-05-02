@@ -36,7 +36,7 @@ const calculateBounds = (values) => {
     return result;
 };
 const Meter = forwardRef((_a, ref) => {
-    var { background = "contrast", direction = "horizontal", kind: kindProp, max: maxProp, min: minProp, round, size = "medium", thickness = "medium", type = "bar", value, values: valuesProp } = _a, rest = __rest(_a, ["background", "direction", "kind", "max", "min", "round", "size", "thickness", "type", "value", "values"]);
+    var { background = "contrast", direction = "horizontal", id, kind: kindProp, max: maxProp, min: minProp, pattern, round, size = "medium", thickness = "medium", type = "bar", value, values: valuesProp } = _a, rest = __rest(_a, ["background", "direction", "id", "kind", "max", "min", "pattern", "round", "size", "thickness", "type", "value", "values"]);
     // normalize kind
     const kind = useMemo(() => {
         if (kindProp)
@@ -81,10 +81,10 @@ const Meter = forwardRef((_a, ref) => {
     }, [kind, maxProp, minProp, values]);
     let content = null;
     if (type === "bar") {
-        content = (jsx(Bar, Object.assign({ ref: ref, background: background, kind: kind, bounds: bounds, round: round, values: values, size: size, thickness: thickness, direction: direction }, rest)));
+        content = (jsx(Bar, Object.assign({ ref: ref, background: background, id: id, kind: kind, pattern: pattern, bounds: bounds, round: round, values: values, size: size, thickness: thickness, direction: direction }, rest)));
     }
     else if (type === "circle" || type === "pie" || type === "semicircle") {
-        content = (jsx(Circle, Object.assign({ ref: ref, background: background, kind: kind, bounds: bounds, round: round, values: values, size: size, thickness: thickness, type: type }, rest)));
+        content = (jsx(Circle, Object.assign({ ref: ref, background: background, id: id, kind: kind, pattern: pattern, bounds: bounds, round: round, values: values, size: size, thickness: thickness, type: type }, rest)));
     }
     return content;
 });

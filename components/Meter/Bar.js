@@ -2,12 +2,12 @@ import { __rest } from 'tslib';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { forwardRef, useMemo } from 'react';
 import { structuredTokens } from 'hpe-design-tokens';
-import { valueColor, backgroundColor } from './utils.js';
+import { valueColor, strokePattern, backgroundColor } from './utils.js';
 
 const Bar = forwardRef((_a, ref // doesn't work with <svg />?
 ) => {
-    var { background, bounds, direction, kind, round, size = "medium", thickness: thicknessProp = "medium", type, // ignored
-    values } = _a, rest = __rest(_a, ["background", "bounds", "direction", "kind", "round", "size", "thickness", "type", "values"]);
+    var { background, bounds, direction, id, kind, pattern: patternProp, round, size = "medium", thickness: thicknessProp = "medium", type, // ignored
+    values } = _a, rest = __rest(_a, ["background", "bounds", "direction", "id", "kind", "pattern", "round", "size", "thickness", "type", "values"]);
     const length = useMemo(() => {
         if (size === "full")
             return 288;
@@ -21,6 +21,7 @@ const Bar = forwardRef((_a, ref // doesn't work with <svg />?
     let start = direction === "horizontal"
         ? capOffset
         : (bounds.pathMax * (length - 2 * capOffset)) / bounds.pathMax;
+    const patterns = [];
     const paths = (values || [])
         .reduce((acc, valueArg, index) => {
         const pathValue = typeof valueArg.value === "number"
@@ -30,7 +31,7 @@ const Bar = forwardRef((_a, ref // doesn't work with <svg />?
             ? valueArg.value
             : valueArg.value[1];
         if (pathValue > 0) {
-            const { highlight, label, onHover, value } = valueArg, pathRest = __rest(valueArg, ["highlight", "label", "onHover", "value"]);
+            const { highlight, label, onHover, pattern: patternName, value } = valueArg, pathRest = __rest(valueArg, ["highlight", "label", "onHover", "pattern", "value"]);
             const key = `p-${index}`;
             const delta = (pathValue * (length - 2 * capOffset)) / bounds.pathMax;
             const d = direction === "horizontal"
@@ -55,7 +56,15 @@ const Bar = forwardRef((_a, ref // doesn't work with <svg />?
             else {
                 start -= delta;
             }
-            const result = (jsx("path", Object.assign({ d: d, fill: "none", stroke: someHighlight && !highlight ? background : stroke, strokeWidth: direction === "horizontal" ? thickness : length, strokeLinecap: round ? "round" : "butt" }, hoverProps, pathRest), key));
+            let patternId;
+            let pattern;
+            if (patternName || patternProp)
+                [patternId, pattern] = strokePattern(id || "meter", patternName || patternProp, stroke);
+            if (pattern)
+                patterns.push(pattern);
+            const result = (jsx("path", Object.assign({ d: d, fill: "none", stroke: patternId ||
+                    (someHighlight && !highlight && background) ||
+                    stroke, strokeWidth: direction === "horizontal" ? thickness : length, strokeLinecap: round ? "round" : "butt" }, hoverProps, pathRest), key));
             acc.push(result);
         }
         return acc;
@@ -73,7 +82,7 @@ const Bar = forwardRef((_a, ref // doesn't work with <svg />?
         : `M ${mid},${capOffset} L ${mid},${length - capOffset}`;
     return (jsxs("svg", Object.assign({ viewBox: direction === "horizontal"
             ? `0 0 ${length} ${thickness}`
-            : `0 0 ${thickness} ${length}`, preserveAspectRatio: "none", width: width, height: direction === "horizontal" ? thickness : length }, rest, { children: [jsx("path", { d: backgroundPath, fill: "none", stroke: backgroundColor(background), strokeWidth: thickness, strokeLinecap: round ? "round" : "square" }), paths] })));
+            : `0 0 ${thickness} ${length}`, preserveAspectRatio: "none", width: width, height: direction === "horizontal" ? thickness : length }, rest, { children: [patterns.length && jsx("defs", { children: patterns }), jsx("path", { d: backgroundPath, fill: "none", stroke: backgroundColor(background), strokeWidth: thickness, strokeLinecap: round ? "round" : "square" }), paths] })));
 });
 Bar.displayName = "Bar";
 
