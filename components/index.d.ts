@@ -13,6 +13,7 @@ export * from "./Grommet";
 export * from "./Header";
 export * from "./Heading";
 export * from "./Icon";
+export * from "./Meter";
 export * from "./NameValueList";
 export * from "./NameValuePair";
 export * from "./Nav";
