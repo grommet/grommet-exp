@@ -1,6 +1,11 @@
 import { forwardRef, useMemo } from "react";
 import { structuredTokens } from "hpe-design-tokens";
-import { GraphicProps, backgroundColor, valueColor } from "./utils";
+import {
+  GraphicProps,
+  backgroundColor,
+  strokePattern,
+  valueColor,
+} from "./utils";
 
 const Bar = forwardRef<SVGElement, GraphicProps>(
   (
@@ -8,7 +13,9 @@ const Bar = forwardRef<SVGElement, GraphicProps>(
       background,
       bounds,
       direction,
+      id,
       kind,
+      pattern: patternProp,
       round,
       size = "medium",
       thickness: thicknessProp = "medium",
@@ -36,6 +43,7 @@ const Bar = forwardRef<SVGElement, GraphicProps>(
         ? capOffset
         : (bounds.pathMax * (length - 2 * capOffset)) / bounds.pathMax;
 
+    const patterns: JSX.Element[] = [];
     const paths = (values || [])
       .reduce((acc: JSX.Element[], valueArg, index) => {
         const pathValue =
@@ -47,7 +55,14 @@ const Bar = forwardRef<SVGElement, GraphicProps>(
             ? valueArg.value
             : valueArg.value[1];
         if (pathValue > 0) {
-          const { highlight, label, onHover, value, ...pathRest } = valueArg;
+          const {
+            highlight,
+            label,
+            onHover,
+            pattern: patternName,
+            value,
+            ...pathRest
+          } = valueArg;
           const key = `p-${index}`;
           const delta = (pathValue * (length - 2 * capOffset)) / bounds.pathMax;
           const d =
@@ -73,12 +88,26 @@ const Bar = forwardRef<SVGElement, GraphicProps>(
             start -= delta;
           }
 
+          let patternId;
+          let pattern;
+          if (patternName || patternProp)
+            [patternId, pattern] = strokePattern(
+              id || "meter",
+              patternName || patternProp,
+              stroke
+            );
+          if (pattern) patterns.push(pattern);
+
           const result = (
             <path
               key={key}
               d={d}
               fill="none"
-              stroke={someHighlight && !highlight ? background : stroke}
+              stroke={
+                patternId ||
+                (someHighlight && !highlight && background) ||
+                stroke
+              }
               strokeWidth={direction === "horizontal" ? thickness : length}
               strokeLinecap={round ? "round" : "butt"}
               {...hoverProps}
@@ -116,6 +145,7 @@ const Bar = forwardRef<SVGElement, GraphicProps>(
         height={direction === "horizontal" ? thickness : length}
         {...rest}
       >
+        {patterns.length && <defs>{patterns}</defs>}
         <path
           d={backgroundPath}
           fill="none"

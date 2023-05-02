@@ -4,6 +4,7 @@ import {
   GraphicProps,
   arcCommands,
   backgroundColor,
+  strokePattern,
   translateEndAngle,
   valueColor,
 } from "./utils";
@@ -14,7 +15,9 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
       background,
       bounds,
       direction, // ignored
+      id,
       kind,
+      pattern: patternProp,
       round,
       size = "medium",
       thickness: thicknessProp = "medium",
@@ -52,13 +55,21 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
     let startAngle = type === "semicircle" ? 270 : 0;
     const paths: JSX.Element[] = [];
     let pathCaps: JSX.Element[] = [];
+    const patterns: JSX.Element[] = [];
     (values || []).forEach((valueArg, index) => {
       const pathValue =
         typeof valueArg.value === "number" ? valueArg.value : valueArg.value[0];
       const colorValue =
         typeof valueArg.value === "number" ? valueArg.value : valueArg.value[1];
       if (pathValue > 0) {
-        const { highlight, label, onHover, value, ...pathRest } = valueArg;
+        const {
+          highlight,
+          label,
+          onHover,
+          pattern: patternName,
+          value,
+          ...pathRest
+        } = valueArg;
         const key = `p-${index}`;
         const stroke = valueColor({
           kind,
@@ -80,6 +91,17 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
             onMouseLeave: () => onHover(false),
           };
         }
+
+        let patternId;
+        let pattern;
+        if (patternName || patternProp)
+          [patternId, pattern] = strokePattern(
+            id || "meter",
+            patternName || patternProp,
+            stroke
+          );
+        if (pattern) patterns.push(pattern);
+
         if (round) {
           const d1 = arcCommands(
             centerX,
@@ -93,7 +115,11 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
               key={key}
               d={d1}
               fill="none"
-              stroke={someHighlight && !highlight ? background : stroke}
+              stroke={
+                patternId ||
+                (someHighlight && !highlight && background) ||
+                stroke
+              }
               strokeWidth={strokeWidth}
               strokeLinecap="round"
               {...hoverProps}
@@ -116,7 +142,11 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
               key={`${key}-`}
               d={d2}
               fill="none"
-              stroke={someHighlight && !highlight ? background : stroke}
+              stroke={
+                patternId ||
+                (someHighlight && !highlight && background) ||
+                stroke
+              }
               strokeWidth={strokeWidth}
               strokeLinecap="round"
               {...hoverProps}
@@ -136,7 +166,11 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
               key={key}
               d={d}
               fill="none"
-              stroke={someHighlight && !highlight ? background : stroke}
+              stroke={
+                patternId ||
+                (someHighlight && !highlight && background) ||
+                stroke
+              }
               strokeWidth={strokeWidth}
               strokeLinecap="butt"
               {...hoverProps}
@@ -184,6 +218,7 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
         height={size === "full" ? "100%" : viewBoxHeight}
         {...rest}
       >
+        {patterns.length && <defs>{patterns}</defs>}
         {track}
         {paths}
         {pathCaps}

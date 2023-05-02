@@ -1,11 +1,14 @@
 import { structuredTokens } from "hpe-design-tokens";
 import { BackgroundType } from "../Box";
 
+export type PatternType = "dots" | "diagonals";
+
 export type ValuesType = {
   highlight?: boolean;
   label?: string;
   onClick?: (event: React.MouseEvent) => void;
   onHover?: (over: boolean) => void;
+  pattern?: PatternType;
   // when value is an array,
   // the first number is used to calculate the length of the path
   // and the second number is used for the stroke color
@@ -25,7 +28,9 @@ export type GraphicProps = {
   background: BackgroundType;
   bounds: BoundsType;
   direction?: "horizontal" | "vertical";
+  id?: string;
   kind: KindType;
+  pattern?: "dots" | "diagonals";
   round?: boolean;
   size?: "small" | "medium" | "large" | "full";
   thickness?: "small" | "medium" | "large";
@@ -145,3 +150,81 @@ export const translateEndAngle = (
   anglePer: number,
   value: number
 ): number => Math.max(0, startAngle + anglePer * value) % 360;
+
+export const strokePattern = (
+  idArg: string,
+  patternName: PatternType | undefined,
+  stroke: string
+): [string, JSX.Element] => {
+  const id = `${idArg}-${patternName}-${stroke}`;
+  let element = null;
+  if (patternName === "dots") {
+    element = (
+      <pattern
+        key={stroke}
+        id={id}
+        x={0}
+        y={0}
+        width={8}
+        height={8}
+        patternUnits="userSpaceOnUse"
+      >
+        <rect
+          x={0}
+          y={0}
+          width={8}
+          height={8}
+          fill={stroke}
+          fillOpacity={0.5}
+        />
+        <circle cx={4} cy={4} r={3} fill={stroke} />
+      </pattern>
+    );
+  } else if (patternName === "diagonals") {
+    element = (
+      <pattern
+        key={stroke}
+        id={id}
+        x={0}
+        y={0}
+        width={12}
+        height={12}
+        patternUnits="userSpaceOnUse"
+      >
+        <line
+          x1="9"
+          y1="0"
+          x2="0"
+          y2="9"
+          stroke={stroke}
+          strokeWidth="3"
+          strokeLinecap="square"
+        />
+        <line
+          x1="12"
+          y1="9"
+          x2="9"
+          y2="12"
+          stroke={stroke}
+          strokeWidth="3"
+          strokeLinecap="square"
+        />
+      </pattern>
+    );
+  } else {
+    element = (
+      <pattern
+        key={stroke}
+        id={id}
+        x={0}
+        y={0}
+        width={8}
+        height={8}
+        patternUnits="userSpaceOnUse"
+      >
+        <rect x={0} y={0} width={8} height={8} fill={stroke} />
+      </pattern>
+    );
+  }
+  return [`url(#${id})`, element];
+};

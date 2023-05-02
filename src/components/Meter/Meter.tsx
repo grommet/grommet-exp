@@ -2,14 +2,16 @@ import { forwardRef, useMemo } from "react";
 import { BackgroundType } from "../Box";
 import { Bar } from "./Bar";
 import { Circle } from "./Circle";
-import { BoundsType, KindType, ValuesType } from "./utils";
+import { BoundsType, KindType, PatternType, ValuesType } from "./utils";
 
 export type MeterProps = {
   background?: BackgroundType;
   direction?: "horizontal" | "vertical";
+  id?: string;
   kind?: KindType;
   max?: number | [number, number];
   min?: number | [number, number];
+  pattern?: PatternType;
   round?: boolean;
   size?: "small" | "medium" | "large" | "full";
   thickness?: "small" | "medium" | "large";
@@ -49,9 +51,11 @@ const Meter = forwardRef<SVGElement, MeterProps>(
     {
       background = "contrast",
       direction = "horizontal",
+      id,
       kind: kindProp,
       max: maxProp,
       min: minProp,
+      pattern,
       round,
       size = "medium",
       thickness = "medium",
@@ -106,7 +110,9 @@ const Meter = forwardRef<SVGElement, MeterProps>(
         <Bar
           ref={ref}
           background={background}
+          id={id}
           kind={kind}
+          pattern={pattern}
           bounds={bounds}
           round={round}
           values={values}
@@ -121,7 +127,9 @@ const Meter = forwardRef<SVGElement, MeterProps>(
         <Circle
           ref={ref}
           background={background}
+          id={id}
           kind={kind}
+          pattern={pattern}
           bounds={bounds}
           round={round}
           values={values}
