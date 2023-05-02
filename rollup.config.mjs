@@ -2,7 +2,7 @@ import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
-import typescript from '@rollup/plugin-typescript';
+import typescript from "@rollup/plugin-typescript";
 import copy from "rollup-plugin-copy";
 
 export default {
@@ -10,9 +10,10 @@ export default {
   treeshake: false,
   output: [
     {
-      dir: './dist',
-      format: 'es',
+      dir: "./dist",
+      format: "es",
       preserveModules: true,
+      preserveModulesRoot: "src",
     },
   ],
   plugins: [
@@ -27,5 +28,11 @@ export default {
       ],
     }),
   ],
-  external: ["react", "react-dom", "grommet-exp-theme", "tslib"],
+  external: [
+    "react",
+    "react-dom",
+    "hpe-design-tokens",
+    "grommet-exp-theme",
+    "tslib",
+  ],
 };

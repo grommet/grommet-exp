@@ -3,19 +3,20 @@ import { box } from "grommet-exp-theme";
 import { ContentSizeType, SpacingSizeType, SpacingType } from "../types";
 import { translateMargin, translatePad } from "../utils";
 
+export type BackgroundType =
+  | "default"
+  | "back"
+  | "front"
+  | "contrast"
+  | "active"
+  | "selected";
 export type AlignType = "start" | "center" | "stretch" | "end";
 export type JustifyType = "start" | "center" | "between" | "end";
 
 type BoxProps = {
   align?: AlignType;
   as?: React.ElementType;
-  background?:
-    | "default"
-    | "back"
-    | "front"
-    | "contrast"
-    | "active"
-    | "selected";
+  background?: BackgroundType;
   border?: boolean | "top" | "bottom" | "left" | "right";
   children?: React.ReactNode;
   className?: string;
