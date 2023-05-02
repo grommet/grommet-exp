@@ -4,9 +4,9 @@ import {
   GraphicProps,
   arcCommands,
   backgroundColor,
-  strokePattern,
   translateEndAngle,
   valueColor,
+  valuePattern,
 } from "./utils";
 
 const Circle = forwardRef<SVGElement, GraphicProps>(
@@ -95,7 +95,7 @@ const Circle = forwardRef<SVGElement, GraphicProps>(
         let patternId;
         let pattern;
         if (patternName || patternProp)
-          [patternId, pattern] = strokePattern(
+          [patternId, pattern] = valuePattern(
             id || "meter",
             patternName || patternProp,
             stroke

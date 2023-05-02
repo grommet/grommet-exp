@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { structuredTokens } from "hpe-design-tokens";
 import { BackgroundType } from "../Box";
 
@@ -17,11 +18,76 @@ export type ValuesType = {
 
 export type KindType = "qualitative" | "sequential" | "divergent" | "single";
 
+export const useKind = (kind?: KindType, values?: ValuesType): KindType => {
+  return useMemo((): KindType => {
+    if (kind) return kind;
+    if (!values) return "single";
+    const firstValue = values[0];
+    if (firstValue && Array.isArray(firstValue.value)) return "sequential";
+    return "qualitative";
+  }, [kind, values]);
+};
+
 export type BoundsType = {
   pathMax: number;
   pathMin: number;
   colorMax: number;
   colorMin: number;
+};
+
+const calculateBounds = (values?: ValuesType): BoundsType => {
+  const result = { pathMax: 0, pathMin: 0, colorMax: 0, colorMin: 0 };
+  if (values && values[0] && Array.isArray(values[0].value)) {
+    values.forEach((value) => {
+      const [pVal] = value.value as [number, number];
+      if (pVal < 0) result.pathMin += pVal;
+      if (pVal > 0) result.pathMax += pVal;
+    });
+    // color max/min should stay 0-100 to align with color names
+    result.colorMin = -100;
+    result.colorMax = 100;
+  } else if (values && values.length > 1) {
+    values.forEach((value) => {
+      const val = value.value as number;
+      if (val < 0) result.pathMin += val;
+      if (val > 0) result.pathMax += val;
+    });
+    result.colorMin = result.pathMin;
+    result.colorMax = result.pathMax;
+  } else {
+    result.pathMax = 100;
+    result.colorMax = 100;
+  }
+  return result;
+};
+
+export const useBounds = (
+  kind: KindType,
+  max?: number | [number, number],
+  min?: number | [number, number],
+  values?: ValuesType
+): BoundsType => {
+  return useMemo((): BoundsType => {
+    if (min !== undefined || max !== undefined) {
+      const result = { pathMax: 100, pathMin: 0, colorMax: 100, colorMin: 0 };
+      if (Array.isArray(min)) {
+        result.pathMin = min[0];
+        result.colorMin = min[1];
+      } else if (min !== undefined) {
+        result.pathMin = min;
+        result.colorMin = min;
+      }
+      if (Array.isArray(max)) {
+        result.pathMax = max[0];
+        result.colorMax = max[1];
+      } else if (max !== undefined) {
+        result.pathMax = max;
+        result.colorMax = max;
+      }
+      return result;
+    }
+    return calculateBounds(values);
+  }, [kind, max, min, values]);
 };
 
 export type GraphicProps = {
@@ -151,7 +217,7 @@ export const translateEndAngle = (
   value: number
 ): number => Math.max(0, startAngle + anglePer * value) % 360;
 
-export const strokePattern = (
+export const valuePattern = (
   idArg: string,
   patternName: PatternType | undefined,
   stroke: string
