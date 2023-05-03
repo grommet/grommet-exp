@@ -4,11 +4,9 @@ import { Heading } from "../Heading";
 import { Paragraph } from "../Paragraph";
 import { Box } from "../Box";
 import { pageHeader, pageHeaderContainerStyle } from "grommet-exp-theme";
-import { SpacingType } from "../types";
 
 type PageHeaderProps = {
   actions?: JSX.Element;
-  pad?: SpacingType;
   parent?: JSX.Element;
   subtitle?: string;
   title?: string;
@@ -16,7 +14,7 @@ type PageHeaderProps = {
 
 const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
   (
-    { actions, pad, parent, subtitle, title, ...rest }: PageHeaderProps,
+    { actions, parent, subtitle, title, ...rest }: PageHeaderProps,
     ref
   ): JSX.Element => {
     return (
@@ -26,7 +24,6 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
           className={pageHeader}
           align="start"
           gap="none"
-          pad={pad || { top: "large", bottom: "medium" }}
           {...rest}
         >
           <Box gridArea="parent">{parent}</Box>
