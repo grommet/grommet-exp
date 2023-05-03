@@ -1,5 +1,6 @@
 import { forwardRef, useMemo } from "react";
-import { BackgroundType } from "../Box";
+import { Box, BackgroundType } from "../Box";
+import { Legend } from "../Legend";
 import { Bar } from "./Bar";
 import { Circle } from "./Circle";
 import { KindType, PatternType, ValuesType, useBounds, useKind } from "./utils";
@@ -9,6 +10,7 @@ export type MeterProps = {
   direction?: "horizontal" | "vertical";
   id?: string;
   kind?: KindType;
+  legend?: boolean;
   max?: number | [number, number];
   min?: number | [number, number];
   pattern?: PatternType;
@@ -27,8 +29,9 @@ const Meter = forwardRef<SVGElement, MeterProps>(
       direction = "horizontal",
       id,
       kind: kindProp,
-      max: maxProp,
-      min: minProp,
+      legend,
+      max,
+      min,
       pattern,
       round,
       size = "medium",
@@ -50,7 +53,7 @@ const Meter = forwardRef<SVGElement, MeterProps>(
       return [];
     }, [value, valuesProp]);
 
-    const bounds = useBounds(kind, maxProp, minProp, values);
+    const bounds = useBounds(kind, max, min, values);
 
     let content = null;
     if (type === "bar") {
@@ -88,6 +91,22 @@ const Meter = forwardRef<SVGElement, MeterProps>(
         />
       );
     }
+
+    if (legend) {
+      content = (
+        <Box direction="row" wrap gap="small" align="center" flex={false}>
+          {content}
+          <Legend
+            id={id ? `${id}-legend` : undefined}
+            kind={kind}
+            max={max}
+            min={min}
+            values={values}
+          />
+        </Box>
+      );
+    }
+
     return content;
   }
 );
