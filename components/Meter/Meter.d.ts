@@ -6,6 +6,7 @@ export type MeterProps = {
     direction?: "horizontal" | "vertical";
     id?: string;
     kind?: KindType;
+    legend?: boolean;
     max?: number | [number, number];
     min?: number | [number, number];
     pattern?: PatternType;

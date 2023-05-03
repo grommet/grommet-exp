@@ -4,10 +4,13 @@ import { forwardRef } from 'react';
 import { text } from 'grommet-exp-theme';
 
 const Text = forwardRef((_a, ref) => {
-    var { as, color, level: levelProp, size, textAlign, weight } = _a, rest = __rest(_a, ["as", "color", "level", "size", "textAlign", "weight"]);
+    var { as, className: classNameProp, color, level: levelProp, size, textAlign, weight } = _a, rest = __rest(_a, ["as", "className", "color", "level", "size", "textAlign", "weight"]);
     const Element = as || "span";
     const level = !size ? levelProp : undefined;
-    return (jsx(Element, Object.assign({ className: text({ color, level, size, textAlign, weight }), ref: ref }, rest)));
+    let className = text({ color, level, size, textAlign, weight });
+    if (classNameProp)
+        className = `${className} ${classNameProp}`;
+    return jsx(Element, Object.assign({ className: className, ref: ref }, rest));
 });
 Text.displayName = "Text";
 

@@ -4,6 +4,7 @@ export type TextAlignType = "start" | "center" | "end" | undefined;
 type TextProps = {
     as?: React.ElementType;
     children?: React.ReactNode;
+    className?: string;
     color?: "strong" | "weak" | "xweak";
     margin?: SpacingType;
     size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
