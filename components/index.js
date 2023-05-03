@@ -32,3 +32,4 @@ import './TableRow/index.js';
 import './Tabs/index.js';
 import './Text/index.js';
 import './TextInput/index.js';
+export { responsiveContainerStyle } from './utils.js';

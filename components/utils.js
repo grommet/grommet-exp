@@ -1,10 +1,22 @@
+import { structuredTokens } from 'hpe-design-tokens';
+
+const responsiveContainerStyle = ({ small, medium, large, xlarge, }) => ({
+    "@container": {
+        [`(min-width: ${structuredTokens.content.small})`]: small || {},
+        [`(min-width: ${structuredTokens.content.medium})`]: medium || {
+            gridTemplateColumns: "1fr",
+        },
+        [`(min-width: ${structuredTokens.content.large})`]: large || {},
+        [`(min-width: ${structuredTokens.content.xlarge})`]: xlarge || {},
+    },
+});
 const translatePad = (pad) => {
     const result = {};
     if (!pad)
         return result;
-    if (typeof pad === 'string')
+    if (typeof pad === "string")
         result.pad = pad;
-    if (typeof pad === 'object') {
+    if (typeof pad === "object") {
         if (pad.horizontal)
             result.padHorizontal = pad.horizontal;
         if (pad.vertical)
@@ -24,9 +36,9 @@ const translateMargin = (margin) => {
     const result = {};
     if (!margin)
         return result;
-    if (typeof margin === 'string')
+    if (typeof margin === "string")
         result.margin = margin;
-    if (typeof margin === 'object') {
+    if (typeof margin === "object") {
         if (margin.horizontal)
             result.marginHorizontal = margin.horizontal;
         if (margin.vertical)
@@ -43,4 +55,4 @@ const translateMargin = (margin) => {
     return result;
 };
 
-export { translateMargin, translatePad };
+export { responsiveContainerStyle, translateMargin, translatePad };

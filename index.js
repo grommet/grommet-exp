@@ -1,4 +1,5 @@
 import './components/index.js';
+export { responsiveContainerStyle } from './components/utils.js';
 export { Anchor } from './components/Anchor/Anchor.js';
 export { Box } from './components/Box/Box.js';
 export { Button } from './components/Button/Button.js';

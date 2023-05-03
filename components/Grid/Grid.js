@@ -19,10 +19,10 @@ const translateGap = (gap) => {
     return result;
 };
 const Grid = forwardRef((_a, ref) => {
-    var { as, align, columns, gap, height, margin = "none", pad = "none", width } = _a, rest = __rest(_a, ["as", "align", "columns", "gap", "height", "margin", "pad", "width"]);
+    var { as, align, className, columns, gap, height, margin = "none", pad = "none", width } = _a, rest = __rest(_a, ["as", "align", "className", "columns", "gap", "height", "margin", "pad", "width"]);
     const Element = as || "div";
-    return (jsx(Element, Object.assign({ className: grid(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ align,
-            columns }, translateGap(gap)), { height }), translateMargin(margin)), translatePad(pad)), { width })), ref: ref }, rest)));
+    return (jsx(Element, Object.assign({ className: `${grid(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ align,
+            columns }, translateGap(gap)), { height }), translateMargin(margin)), translatePad(pad)), { width }))} ${className}`, ref: ref }, rest)));
 });
 Grid.displayName = "Grid";
 

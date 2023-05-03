@@ -9,6 +9,7 @@ type GridProps = {
     as?: React.ElementType;
     align?: "start" | "center" | "stretch" | "end";
     children?: React.ReactNode | React.ReactNode[];
+    className?: string;
     columns?: GridColumnsType;
     gap?: GapType;
     height?: ContentSizeType;
