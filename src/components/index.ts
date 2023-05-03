@@ -31,3 +31,4 @@ export * from "./TableRow";
 export * from "./Tabs";
 export * from "./Text";
 export * from "./TextInput";
+export { responsiveContainerStyle } from "./utils";

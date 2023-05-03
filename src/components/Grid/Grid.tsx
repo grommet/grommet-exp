@@ -30,6 +30,7 @@ type GridProps = {
   as?: React.ElementType;
   align?: "start" | "center" | "stretch" | "end";
   children?: React.ReactNode | React.ReactNode[];
+  className?: string;
   columns?: GridColumnsType;
   gap?: GapType;
   height?: ContentSizeType;
@@ -54,6 +55,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(
     {
       as,
       align,
+      className,
       columns,
       gap,
       height,
@@ -67,7 +69,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(
     const Element = as || "div";
     return (
       <Element
-        className={grid({
+        className={`${grid({
           align,
           columns,
           ...translateGap(gap),
@@ -75,7 +77,7 @@ const Grid = forwardRef<HTMLDivElement, GridProps>(
           ...translateMargin(margin),
           ...translatePad(pad),
           width,
-        })}
+        })} ${className}`}
         ref={ref}
         {...rest}
       />
