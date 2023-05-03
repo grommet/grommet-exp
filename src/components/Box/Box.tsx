@@ -26,6 +26,7 @@ type BoxProps = {
   gap?: SpacingSizeType;
   gridArea?: string;
   height?: ContentSizeType;
+  id?: string;
   justify?: JustifyType;
   margin?: SpacingType;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => any;
@@ -50,6 +51,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
       gap,
       gridArea,
       height,
+      id,
       justify,
       margin,
       pad,
@@ -83,6 +85,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
         })} ${className}`}
         style={{ gridArea }}
         ref={ref}
+        id={id}
         {...rest}
       />
     );

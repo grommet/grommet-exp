@@ -3,8 +3,8 @@ import { structuredTokens } from "hpe-design-tokens";
 import {
   GraphicProps,
   backgroundColor,
-  strokePattern,
   valueColor,
+  valuePattern,
 } from "./utils";
 
 const Bar = forwardRef<SVGElement, GraphicProps>(
@@ -91,7 +91,7 @@ const Bar = forwardRef<SVGElement, GraphicProps>(
           let patternId;
           let pattern;
           if (patternName || patternProp)
-            [patternId, pattern] = strokePattern(
+            [patternId, pattern] = valuePattern(
               id || "meter",
               patternName || patternProp,
               stroke
