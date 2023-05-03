@@ -7,6 +7,7 @@ export type TextAlignType = "start" | "center" | "end" | undefined;
 type TextProps = {
   as?: React.ElementType;
   children?: React.ReactNode;
+  className?: string;
   color?: "strong" | "weak" | "xweak";
   margin?: SpacingType;
   size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
@@ -19,6 +20,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>(
   (
     {
       as,
+      className: classNameProp,
       color,
       level: levelProp,
       size,
@@ -30,13 +32,9 @@ const Text = forwardRef<HTMLSpanElement, TextProps>(
   ): JSX.Element => {
     const Element = as || "span";
     const level = !size ? levelProp : undefined;
-    return (
-      <Element
-        className={text({ color, level, size, textAlign, weight })}
-        ref={ref}
-        {...rest}
-      />
-    );
+    let className = text({ color, level, size, textAlign, weight });
+    if (classNameProp) className = `${className} ${classNameProp}`;
+    return <Element className={className} ref={ref} {...rest} />;
   }
 );
 

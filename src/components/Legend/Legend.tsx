@@ -1,6 +1,13 @@
 import { forwardRef } from "react";
-import { legend, legendContainer, legendSwatch } from "grommet-exp-theme";
+import {
+  legend,
+  legendContainer,
+  legendItem,
+  legendLabel,
+  legendSwatch,
+} from "grommet-exp-theme";
 import { Box } from "../Box";
+import { Text } from "../Text";
 import {
   KindType,
   ValuesType,
@@ -26,20 +33,29 @@ const Legend = forwardRef<HTMLHeadingElement, LegendProps>(
     const kind = useKind(kindProp, values);
     const bounds = useBounds(kind, max, min, values);
     return (
-      <Box ref={ref} className={legendContainer} id={id} flex="grow" {...rest}>
+      <Box
+        ref={ref}
+        id={id}
+        className={legendContainer}
+        flex="grow"
+        {...rest}
+      >
         <Box className={legend} flex={false}>
           {values.map((valueArg, index) => {
             const { label, pattern: patternName } = valueArg;
+
             const colorValue =
               typeof valueArg.value === "number"
                 ? valueArg.value
                 : valueArg.value[1];
+
             const fill = valueColor({
               kind,
               bounds,
               value: colorValue,
               index,
             });
+
             let patternId;
             let pattern;
             if (patternName)
@@ -50,7 +66,14 @@ const Legend = forwardRef<HTMLHeadingElement, LegendProps>(
               );
 
             return (
-              <Box key={label} direction="row" gap="small" align="center">
+              <Box
+                key={label}
+                className={legendItem}
+                direction="row"
+                gap="small"
+                align="center"
+                flex={false}
+              >
                 <svg
                   className={legendSwatch}
                   viewBox="0 0 24 24"
@@ -66,7 +89,7 @@ const Legend = forwardRef<HTMLHeadingElement, LegendProps>(
                     fill={patternId || fill}
                   />
                 </svg>
-                {label}
+                <Text className={legendLabel}>{label}</Text>
               </Box>
             );
           })}

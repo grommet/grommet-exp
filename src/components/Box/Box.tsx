@@ -44,7 +44,7 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
       as,
       background,
       border,
-      className,
+      className: classNameProp,
       direction = "column",
       elevation,
       flex,
@@ -64,25 +64,28 @@ const Box = forwardRef<HTMLDivElement, BoxProps>(
     ref
   ): JSX.Element => {
     const Element = as || "div";
+    let className = box({
+      align,
+      background,
+      border,
+      direction,
+      elevation,
+      flex,
+      gap,
+      height,
+      justify,
+      ...translateMargin(margin),
+      ...translatePad(pad),
+      position,
+      round,
+      width,
+      wrap,
+    });
+    if (classNameProp) className = `${className} ${classNameProp}`;
+
     return (
       <Element
-        className={`${box({
-          align,
-          background,
-          border,
-          direction,
-          elevation,
-          flex,
-          gap,
-          height,
-          justify,
-          ...translateMargin(margin),
-          ...translatePad(pad),
-          position,
-          round,
-          width,
-          wrap,
-        })} ${className}`}
+        className={className}
         style={{ gridArea }}
         ref={ref}
         id={id}
