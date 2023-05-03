@@ -18,7 +18,7 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
     ref
   ): JSX.Element => {
     return (
-      <Box className={pageHeaderContainerStyle}>
+      <Box className={pageHeaderContainerStyle} gridArea="pageHeader">
         <Header
           ref={ref}
           className={pageHeader}

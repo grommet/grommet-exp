@@ -18,10 +18,10 @@ const PageContent = forwardRef<HTMLDivElement, PageContentProps>(
     { align, background, className, fill, gap, ...rest }: PageContentProps,
     ref
   ): JSX.Element => {
-    const { kind } = useContext(PageContext) as PageContextType;
+    const { kind, layout } = useContext(PageContext) as PageContextType;
     return (
       <div
-        className={`${pageContent({ kind })} ${box({
+        className={`${pageContent({ kind, layout })} ${box({
           align,
           background,
           gap,

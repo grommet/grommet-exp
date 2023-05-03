@@ -5,12 +5,13 @@ import { PageContext } from "./PageContext";
 type PageProps = {
   children?: React.ReactNode;
   kind?: "wide" | "narrow" | "full";
+  layout?: "header-main-aside" | "header-main";
 };
 
 const Page = forwardRef<HTMLDivElement, PageProps>(
-  ({ kind, ...rest }: PageProps, ref): JSX.Element => {
+  ({ kind, layout, ...rest }: PageProps, ref): JSX.Element => {
     return (
-      <PageContext.Provider value={{ kind }}>
+      <PageContext.Provider value={{ kind, layout }}>
         <div className={page} ref={ref} {...rest} />
       </PageContext.Provider>
     );
