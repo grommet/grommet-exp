@@ -7,7 +7,8 @@ import { PageContext } from '../Page/PageContext.js';
 const PageContent = forwardRef((_a, ref) => {
     var { background, className, fill, gap } = _a, rest = __rest(_a, ["background", "className", "fill", "gap"]);
     const { kind } = useContext(PageContext);
-    return (jsx("div", Object.assign({ className: `${pageContent({ background, kind })} ${box({
+    return (jsx("div", Object.assign({ className: `${pageContent({ kind })} ${box({
+            background,
             gap,
         })} ${className}`, ref: ref }, rest)));
 });
