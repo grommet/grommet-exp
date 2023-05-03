@@ -1,6 +1,7 @@
 /// <reference types="react" />
 import { SpacingSizeType } from "../types";
 type PageContentProps = {
+    align?: "start" | "center" | "stretch" | "end";
     background?: "default" | "back" | "front" | "contrast";
     children?: React.ReactNode;
     className?: string;
