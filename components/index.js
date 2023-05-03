@@ -3,6 +3,7 @@ import './Box/index.js';
 import './Button/index.js';
 import './Card/index.js';
 import './Carousel/index.js';
+import './DataTable/index.js';
 import './Drop/index.js';
 import './Footer/index.js';
 import './Form/index.js';

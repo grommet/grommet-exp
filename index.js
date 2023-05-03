@@ -6,6 +6,7 @@ export { Button } from './components/Button/Button.js';
 export { ButtonContext } from './components/Button/ButtonContext.js';
 export { Card } from './components/Card/Card.js';
 export { Carousel } from './components/Carousel/Carousel.js';
+export { DataTable } from './components/DataTable/DataTable.js';
 export { Drop } from './components/Drop/Drop.js';
 export { Footer } from './components/Footer/Footer.js';
 export { Form } from './components/Form/Form.js';
