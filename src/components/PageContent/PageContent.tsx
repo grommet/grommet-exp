@@ -4,6 +4,8 @@ import { PageContext, PageContextType } from "../Page/PageContext";
 import { SpacingSizeType } from "../types";
 
 type PageContentProps = {
+  // TO DO export and support box props
+  align?: "start" | "center" | "stretch" | "end";
   background?: "default" | "back" | "front" | "contrast";
   children?: React.ReactNode;
   className?: string;
@@ -13,13 +15,14 @@ type PageContentProps = {
 
 const PageContent = forwardRef<HTMLDivElement, PageContentProps>(
   (
-    { background, className, fill, gap, ...rest }: PageContentProps,
+    { align, background, className, fill, gap, ...rest }: PageContentProps,
     ref
   ): JSX.Element => {
     const { kind } = useContext(PageContext) as PageContextType;
     return (
       <div
         className={`${pageContent({ kind })} ${box({
+          align,
           background,
           gap,
         })} ${className}`}
