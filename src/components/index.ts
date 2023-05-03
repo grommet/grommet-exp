@@ -3,6 +3,7 @@ export * from "./Box";
 export * from "./Button";
 export * from "./Card";
 export * from "./Carousel";
+export * from "./DataTable";
 export * from "./Drop";
 export * from "./Footer";
 export * from "./Form";
