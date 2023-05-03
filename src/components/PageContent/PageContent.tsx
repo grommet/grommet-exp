@@ -19,7 +19,8 @@ const PageContent = forwardRef<HTMLDivElement, PageContentProps>(
     const { kind } = useContext(PageContext) as PageContextType;
     return (
       <div
-        className={`${pageContent({ background, kind })} ${box({
+        className={`${pageContent({ kind })} ${box({
+          background,
           gap,
         })} ${className}`}
         ref={ref}

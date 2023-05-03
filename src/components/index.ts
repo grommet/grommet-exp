@@ -2,7 +2,6 @@ export * from "./Anchor";
 export * from "./Box";
 export * from "./Button";
 export * from "./Card";
-export * from "./Container";
 export * from "./Carousel";
 export * from "./Drop";
 export * from "./Footer";
