@@ -1,8 +1,6 @@
 /// <reference types="react" />
-import { SpacingType } from "../types";
 type PageHeaderProps = {
     actions?: JSX.Element;
-    pad?: SpacingType;
     parent?: JSX.Element;
     subtitle?: string;
     title?: string;
