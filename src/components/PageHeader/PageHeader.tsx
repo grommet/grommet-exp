@@ -32,7 +32,10 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
           {...rest}
         >
           {icon && (
-            <Box gridArea="icon" pad={{ vertical: "medium" }}>
+            <Box
+              gridArea="icon"
+              pad={parent ? { vertical: "medium" } : { bottom: "medium" }}
+            >
               {icon}
             </Box>
           )}
