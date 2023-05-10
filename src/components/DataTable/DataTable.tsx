@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Table } from "../Table";
-import { TableBody } from "../TableBody";
-import { TableHeader } from "../TableHeader";
-import { TableRow } from "../TableRow";
-import { TableCell } from "../TableCell";
+import { Table } from "./Table";
+import { TableBody } from "./TableBody";
+import { TableHeader } from "./TableHeader";
+import { TableRow } from "./TableRow";
+import { TableCell } from "./TableCell";
 
 interface Column {
   property?: string;

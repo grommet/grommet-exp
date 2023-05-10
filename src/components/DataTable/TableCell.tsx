@@ -1,5 +1,5 @@
 import { forwardRef, useContext } from "react";
-import { TableContext } from "../Table/TableContext";
+import { TableContext } from "./TableContext";
 import { td, th } from "grommet-exp-theme";
 
 type TableCell = {

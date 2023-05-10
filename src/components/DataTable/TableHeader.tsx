@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { TableContext } from "../Table";
+import { TableContext } from "./TableContext";
 
 type TableHeader = {
   children?: React.ReactNode;
