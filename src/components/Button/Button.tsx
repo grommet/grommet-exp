@@ -30,17 +30,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ): JSX.Element => {
     const { kind: contextKind } = useContext(ButtonContext);
+    const kind = contextKind ?? kindProp;
     const icon =
       iconProp && !iconProp.props.size
-        ? cloneElement(iconProp, { className: buttonIcon({ size }) })
+        ? cloneElement(iconProp, {
+            className: buttonIcon({ kind, size }),
+            key: "icon",
+          })
         : iconProp;
     const iconOnly: boolean | undefined = (icon && !label) || undefined;
 
     let content;
     if (icon && label) {
+      content = [icon, <span key="label">{label}</span>];
       content = (
         <Box direction="row" gap="small" align="center">
-          {reverse ? [label, icon] : [icon, label]}
+          {reverse ? content.reverse() : content}
         </Box>
       );
     } else content = icon || label;
@@ -48,12 +53,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={button({
-          active,
-          iconOnly,
-          kind: contextKind ?? kindProp,
-          size,
-        })}
+        className={button({ active, iconOnly, kind, size })}
         type={type}
         onClick={onClick}
         {...rest}

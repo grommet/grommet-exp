@@ -2630,7 +2630,7 @@ grapheme-splitter@^1.0.4:
 
 "grommet-exp-theme@https://github.com/grommet/grommet-exp-theme/tarball/stable":
   version "1.0.0"
-  resolved "https://github.com/grommet/grommet-exp-theme/tarball/stable#9565b0da3a25171b6859f9efd809b7f2c6539157"
+  resolved "https://github.com/grommet/grommet-exp-theme/tarball/stable#6ebef55a31fab2b753fb2c7f50f704fa69b5fbce"
   dependencies:
     "@vanilla-extract/css" "^1.9.5"
     "@vanilla-extract/recipes" "^0.3.0"
