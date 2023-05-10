@@ -9,11 +9,21 @@ type AnchorProps = {
   disabled?: boolean;
   href?: string;
   reverse?: boolean;
+  size?: "xsmall" | "small" | "medium" | "large";
 };
 
 const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
   (
-    { children, disabled, href, icon, label, reverse, ...rest }: AnchorProps,
+    {
+      children,
+      disabled,
+      href,
+      icon,
+      label,
+      reverse,
+      size,
+      ...rest
+    }: AnchorProps,
     ref
   ): JSX.Element => {
     let content = children;
@@ -29,7 +39,7 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 
     return (
       <a
-        className={anchor}
+        className={anchor({ size })}
         ref={ref}
         {...rest}
         href={!disabled ? href : undefined}
