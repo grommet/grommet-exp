@@ -30,7 +30,7 @@ const Meter = forwardRef((_a, ref) => {
         content = (jsx(Circle, Object.assign({ ref: ref, background: background, id: id, kind: kind, pattern: pattern, bounds: bounds, round: round, values: values, size: size, thickness: thickness, type: type }, rest)));
     }
     if (legend) {
-        content = (jsxs(Box, Object.assign({ direction: "row", wrap: true, gap: "small", align: "center", flex: false }, { children: [content, jsx(Legend, { id: id ? `${id}-legend` : undefined, kind: kind, max: max, min: min, values: values })] })));
+        content = (jsxs(Box, Object.assign({ direction: "row", wrap: true, gap: "medium", align: "center", flex: false }, { children: [content, jsx(Legend, { id: id ? `${id}-legend` : undefined, kind: kind, max: max, min: min, values: values })] })));
     }
     return content;
 });

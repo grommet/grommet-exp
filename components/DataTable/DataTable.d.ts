@@ -1,4 +1,3 @@
-/// <reference types="react" />
 interface Column {
     property?: string;
     header?: string;
@@ -10,5 +9,5 @@ interface Datum {
 export declare const DataTable: ({ columns, data, }: {
     columns?: Column[] | undefined;
     data?: Datum[] | undefined;
-}) => JSX.Element;
+}) => import("react/jsx-runtime").JSX.Element;
 export {};
