@@ -20,6 +20,7 @@ type BoxProps = {
     justify?: JustifyType;
     margin?: SpacingType;
     onClick?: (event: React.MouseEvent<HTMLDivElement>) => any;
+    overflow?: "hidden";
     pad?: SpacingType;
     position?: "absolute" | "fixed" | "relative";
     round?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "full";

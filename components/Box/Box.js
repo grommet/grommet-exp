@@ -5,9 +5,9 @@ import { box } from 'grommet-exp-theme';
 import { translateMargin, translatePad } from '../utils.js';
 
 const Box = forwardRef((_a, ref) => {
-    var { align, as, background, border, className: classNameProp, direction = "column", elevation, flex, gap, gridArea, height, id, justify, margin, pad, position, round, width, wrap } = _a, rest = __rest(_a, ["align", "as", "background", "border", "className", "direction", "elevation", "flex", "gap", "gridArea", "height", "id", "justify", "margin", "pad", "position", "round", "width", "wrap"]);
+    var { align, as, background, border, className: classNameProp, direction = "column", elevation, flex, gap, gridArea, height, id, justify, margin, overflow, pad, position, round, width, wrap } = _a, rest = __rest(_a, ["align", "as", "background", "border", "className", "direction", "elevation", "flex", "gap", "gridArea", "height", "id", "justify", "margin", "overflow", "pad", "position", "round", "width", "wrap"]);
     const Element = as || "div";
-    let className = box(Object.assign(Object.assign(Object.assign({ align,
+    let className = box(Object.assign(Object.assign(Object.assign(Object.assign({ align,
         background,
         border,
         direction,
@@ -15,7 +15,7 @@ const Box = forwardRef((_a, ref) => {
         flex,
         gap,
         height,
-        justify }, translateMargin(margin)), translatePad(pad)), { position,
+        justify }, translateMargin(margin)), { overflow }), translatePad(pad)), { position,
         round,
         width,
         wrap }));
