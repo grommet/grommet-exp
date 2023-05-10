@@ -39,7 +39,7 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
               {icon}
             </Box>
           )}
-          <Box gridArea="parent">{parent}</Box>
+          {parent && <Box gridArea="parent">{parent}</Box>}
           <Box gridArea="title">
             <Heading level={1}>{title}</Heading>
           </Box>
@@ -48,9 +48,11 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
               <Paragraph level={1}>{subtitle}</Paragraph>
             </Box>
           )}
-          <Box gridArea="actions" className={actionsStyle}>
-            {actions}
-          </Box>
+          {actions && (
+            <Box gridArea="actions" className={actionsStyle}>
+              {actions}
+            </Box>
+          )}
         </Header>
       </Box>
     );
