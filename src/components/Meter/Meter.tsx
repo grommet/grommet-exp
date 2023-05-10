@@ -94,7 +94,7 @@ const Meter = forwardRef<SVGElement, MeterProps>(
 
     if (legend) {
       content = (
-        <Box direction="row" wrap gap="small" align="center" flex={false}>
+        <Box direction="row" wrap gap="medium" align="center" flex={false}>
           {content}
           <Legend
             id={id ? `${id}-legend` : undefined}

@@ -1,5 +1,5 @@
 import { cloneElement, forwardRef, useContext } from "react";
-import { button } from "grommet-exp-theme";
+import { button, buttonIcon } from "grommet-exp-theme";
 import { Box } from "../Box";
 import { ButtonContext, ButtonKindType } from "./ButtonContext";
 
@@ -23,7 +23,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       label,
       onClick,
       reverse,
-      size,
+      size = "medium",
       type = "button",
       ...rest
     }: ButtonProps,
@@ -32,7 +32,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const { kind: contextKind } = useContext(ButtonContext);
     const icon =
       iconProp && !iconProp.props.size
-        ? cloneElement(iconProp, { size })
+        ? cloneElement(iconProp, { className: buttonIcon({ size }) })
         : iconProp;
     const iconOnly: boolean | undefined = (icon && !label) || undefined;
 
