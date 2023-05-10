@@ -7,7 +7,7 @@ type TextProps = {
     className?: string;
     color?: "strong" | "weak" | "xweak";
     margin?: SpacingType;
-    size?: "xsmall" | "small" | "medium" | "large" | "xlarge";
+    size?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "3xl" | "4xl" | "5xl" | "6xl";
     textAlign?: TextAlignType;
     weight?: "light" | "regular" | "medium" | "semibold" | "bold";
     level?: 1 | 2 | 3;
