@@ -11,6 +11,8 @@ type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
   reverse?: boolean;
   size?: "xsmall" | "small" | "medium" | "large";
+  // TO DO remove this. temp work around for icon only medium button on desktop
+  style?: object;
   type?: "button" | "reset" | "submit";
 };
 
@@ -25,6 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       reverse,
       size = "medium",
       type = "button",
+      style,
       ...rest
     }: ButtonProps,
     ref
@@ -56,6 +59,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={button({ active, iconOnly, kind, size })}
         type={type}
         onClick={onClick}
+        style={style}
         {...rest}
       >
         {content}
