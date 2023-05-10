@@ -25,15 +25,17 @@ export const DataTable = ({
   return (
     <Table>
       <TableHeader>
-        {columns?.map((column) => (
-          <TableCell>{column.header}</TableCell>
-        ))}
+        <TableRow>
+          {columns?.map((column, j) => (
+            <TableCell key={column.property || j}>{column.header}</TableCell>
+          ))}
+        </TableRow>
       </TableHeader>
       <TableBody>
-        {data?.map((datum) => (
-          <TableRow>
-            {columns?.map((column) => (
-              <TableCell>
+        {data?.map((datum, i) => (
+          <TableRow key={i}>
+            {columns?.map((column, j) => (
+              <TableCell key={column.property || j}>
                 {(column.render && column.render(datum)) ||
                   (column.property ? datum[column.property] : "--")}
               </TableCell>
