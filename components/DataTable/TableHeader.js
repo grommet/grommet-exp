@@ -1,8 +1,7 @@
 import { __rest } from 'tslib';
 import { jsx } from 'react/jsx-runtime';
 import { forwardRef } from 'react';
-import '../Table/index.js';
-import { TableContext } from '../Table/TableContext.js';
+import { TableContext } from './TableContext.js';
 
 const TableHeader = forwardRef((_a, ref) => {
     var rest = __rest(_a, []);

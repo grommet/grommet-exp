@@ -1,7 +1,7 @@
 import { __rest } from 'tslib';
 import { jsx } from 'react/jsx-runtime';
 import { forwardRef, useContext } from 'react';
-import { TableContext } from '../Table/TableContext.js';
+import { TableContext } from './TableContext.js';
 import { th, td } from 'grommet-exp-theme';
 
 const TableCell = forwardRef((_a, ref) => {
